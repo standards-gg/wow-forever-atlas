@@ -4,11 +4,12 @@ import "leaflet/dist/leaflet.css";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import type * as LeafletTypes from "leaflet";
 import { biomeSolidColor, getBiome } from "@/lib/biome";
-import { rectToLatLngBounds, toLatLng, WORLD_SIZE, type WorldPin, type WorldZone } from "@/lib/world-frame";
+import { rectToLatLngBounds, toLatLng, WORLD_SIZE, type WorldContinent, type WorldPin, type WorldZone } from "@/lib/world-frame";
 
 const PIN_MIN_ZOOM = 2; // below this zoom, individual quest/NPC pins are hidden to avoid clutter
 
 export interface AtlasMapProps {
+  worldContinents: WorldContinent[];
   worldZones: WorldZone[];
   pins: WorldPin[];
   focusSlug?: string;
@@ -32,7 +33,7 @@ export interface AtlasMapHandle {
  * map projects use), and is what's used here.
  */
 export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function AtlasMap(
-  { worldZones, pins, focusSlug, onSelectZone, onSelectPin },
+  { worldContinents, worldZones, pins, focusSlug, onSelectZone, onSelectPin },
   ref
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -81,9 +82,23 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
       const worldBounds: LeafletTypes.LatLngBoundsExpression = [toLatLng(0, WORLD_SIZE), toLatLng(WORLD_SIZE, 0)];
       map.setMaxBounds(L.latLngBounds(worldBounds).pad(0.15));
 
-      // Zone layer: real terrain image where extracted, generated biome color otherwise.
+      // Base layer: one seamless real-terrain image per continent — what
+      // makes the whole map read as one continuous landmass instead of
+      // disconnected zone boxes. Higher-detail per-zone tiles (below) sit
+      // on top of this within their own bounds.
+      for (const wc of worldContinents) {
+        if (!wc.tile) continue;
+        L.imageOverlay(`/data/continents/${wc.slug}.png`, rectToLatLngBounds(wc.worldRect), {
+          interactive: false,
+        }).addTo(map!);
+      }
+
+      // Zone layer: real terrain image where extracted (highest detail), a
+      // faint outline over the continent base layer where a continent
+      // image exists, or a solid generated biome color as a last resort.
       for (const wz of worldZones) {
         const bounds = rectToLatLngBounds(wz.worldRect);
+        const continentHasImage = worldContinents.find((c) => c.continent.mapId === wz.continent.mapId)?.tile;
         let layer: LeafletTypes.Layer;
         if (wz.tile) {
           layer = L.imageOverlay(`/data/tiles/${wz.slug}.png`, bounds, { interactive: true });
@@ -93,7 +108,7 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
             color: wz.hasEntityData ? "#e8863a" : "#00000055",
             weight: wz.hasEntityData ? 2 : 1,
             fillColor: biomeSolidColor(biome),
-            fillOpacity: 0.85,
+            fillOpacity: continentHasImage ? 0.08 : 0.85,
           });
         }
         layer.addTo(map!);

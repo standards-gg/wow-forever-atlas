@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-09-22T23:49:30.169Z",
+  "continents": [
+    {
+      "slug": "eastern-kingdoms",
+      "name": "Eastern Kingdoms",
+      "width": 2944,
+      "height": 5376,
+      "tileMinCol": 23,
+      "tileMinRow": 20,
+      "tileMaxCol": 45,
+      "tileMaxRow": 61
+    },
+    {
+      "slug": "kalimdor",
+      "name": "Kalimdor",
+      "width": 3136,
+      "height": 3584,
+      "tileMinCol": 0,
+      "tileMinRow": 0,
+      "tileMaxCol": 48,
+      "tileMaxRow": 55
+    }
+  ]
+}

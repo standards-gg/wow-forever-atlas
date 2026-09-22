@@ -91,6 +91,27 @@ export interface WorldZone {
   tile?: TileManifestEntry;
 }
 
+export interface WorldContinent {
+  continent: ContinentGeography;
+  slug: string;
+  worldRect: WorldRect;
+  tile?: TileManifestEntry;
+}
+
+/** One seamless real-terrain image per continent — the base layer under the higher-detail per-zone tiles. */
+export function buildWorldContinents(world: WorldGeography, continentTiles: TileManifestEntry[]): WorldContinent[] {
+  const tileBySlug = new Map(continentTiles.map((t) => [t.slug, t]));
+  return world.continents.map((continent) => {
+    const slug = slugify(continent.name);
+    return {
+      continent,
+      slug,
+      worldRect: fractionToWorldRect(continentFractionInWorld(continent)),
+      tile: tileBySlug.get(slug),
+    };
+  });
+}
+
 export function buildWorldZones(
   world: WorldGeography,
   entityDataset: AtlasDataset | null,

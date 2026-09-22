@@ -6,9 +6,10 @@ import { buildWorldGeography } from "../src/zones.js";
 const fixturesDir = fileURLToPath(new URL("../fixtures/", import.meta.url));
 const areaTableCsv = readFileSync(fixturesDir + "AreaTable.csv", "utf-8");
 const uiMapAssignmentCsv = readFileSync(fixturesDir + "UiMapAssignment.csv", "utf-8");
+const mapCsv = readFileSync(fixturesDir + "Map.csv", "utf-8");
 
 describe("buildWorldGeography — real wago.tools DB2 data (build 1.60.1.69913)", () => {
-  const world = buildWorldGeography(areaTableCsv, uiMapAssignmentCsv, "1.60.1.69913");
+  const world = buildWorldGeography(areaTableCsv, uiMapAssignmentCsv, mapCsv, "1.60.1.69913");
 
   it("finds both continents with real, distinct world bounds", () => {
     expect(world.continents).toHaveLength(2);
@@ -18,6 +19,13 @@ describe("buildWorldGeography — real wago.tools DB2 data (build 1.60.1.69913)"
     expect(kalimdor.uiMapId).toBe(1414);
     expect(ek.worldBounds.minX).toBeLessThan(ek.worldBounds.maxX);
     expect(kalimdor.worldBounds.minX).toBeLessThan(kalimdor.worldBounds.maxX);
+  });
+
+  it("includes each continent's real WdtFileDataID from Map.db2, for terrain-tile extraction", () => {
+    const ek = world.continents.find((c) => c.name === "Eastern Kingdoms")!;
+    const kalimdor = world.continents.find((c) => c.name === "Kalimdor")!;
+    expect(ek.wdtFileDataId).toBe(775971);
+    expect(kalimdor.wdtFileDataId).toBe(782779);
   });
 
   it("places Kalimdor to the west of Eastern Kingdoms on the shared Azeroth world map (real Blizzard layout)", () => {

@@ -2,11 +2,12 @@
 
 import { useMemo, useRef, useState } from "react";
 import { getZoneContents, type AtlasDataset } from "@/lib/atlas-data-core";
-import type { WorldPin, WorldZone } from "@/lib/world-frame";
+import type { WorldContinent, WorldPin, WorldZone } from "@/lib/world-frame";
 import { AtlasMap, type AtlasMapHandle } from "./AtlasMap";
 import { DiscoveryPanel } from "./DiscoveryPanel";
 
 export interface AtlasExperienceProps {
+  worldContinents: WorldContinent[];
   worldZones: WorldZone[];
   pins: WorldPin[];
   dataset: AtlasDataset | null;
@@ -19,7 +20,7 @@ export interface AtlasExperienceProps {
  * updates live as you click around the map — no page navigation, matching
  * the direct feedback that separate static pages weren't good enough.
  */
-export function AtlasExperience({ worldZones, pins, dataset, initialFocusSlug }: AtlasExperienceProps) {
+export function AtlasExperience({ worldContinents, worldZones, pins, dataset, initialFocusSlug }: AtlasExperienceProps) {
   const mapRef = useRef<AtlasMapHandle>(null);
   const [selectedZoneSlug, setSelectedZoneSlug] = useState<string | null>(initialFocusSlug ?? null);
   const [selectedPin, setSelectedPin] = useState<WorldPin | null>(null);
@@ -75,6 +76,7 @@ export function AtlasExperience({ worldZones, pins, dataset, initialFocusSlug }:
       <div className="relative h-[60vh] lg:h-full">
         <AtlasMap
           ref={mapRef}
+          worldContinents={worldContinents}
           worldZones={worldZones}
           pins={pins}
           focusSlug={initialFocusSlug}

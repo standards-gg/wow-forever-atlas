@@ -1,11 +1,12 @@
 {
   "build": "1.60.1.69913",
-  "fetchedAt": "2026-09-22T12:47:54.163Z",
+  "fetchedAt": "2026-09-22T23:30:59.020Z",
   "continents": [
     {
       "mapId": 0,
       "uiMapId": 1415,
       "name": "Eastern Kingdoms",
+      "wdtFileDataId": 775971,
       "worldBounds": {
         "minX": -16000,
         "minY": -19199.900390625,
@@ -23,6 +24,7 @@
       "mapId": 1,
       "uiMapId": 1414,
       "name": "Kalimdor",
+      "wdtFileDataId": 782779,
       "worldBounds": {
         "minX": -11733.299804688,
         "minY": -19733.2109375,

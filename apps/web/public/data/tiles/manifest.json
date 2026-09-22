@@ -1,7 +1,97 @@
 {
-  "generatedAt": "2026-09-22T14:21:34.667Z",
+  "generatedAt": "2026-09-22T23:40:34.850Z",
   "tilePixels": 512,
   "zones": [
+    {
+      "slug": "dun-morogh",
+      "name": "Dun Morogh",
+      "width": 2560,
+      "height": 1792
+    },
+    {
+      "slug": "badlands",
+      "name": "Badlands",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "blasted-lands",
+      "name": "Blasted Lands",
+      "width": 3584,
+      "height": 3072
+    },
+    {
+      "slug": "swamp-of-sorrows",
+      "name": "Swamp of Sorrows",
+      "width": 2560,
+      "height": 1536
+    },
+    {
+      "slug": "duskwood",
+      "name": "Duskwood",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "wetlands",
+      "name": "Wetlands",
+      "width": 2304,
+      "height": 1536
+    },
+    {
+      "slug": "elwynn-forest",
+      "name": "Elwynn Forest",
+      "width": 3584,
+      "height": 3072
+    },
+    {
+      "slug": "western-plaguelands",
+      "name": "Western Plaguelands",
+      "width": 2304,
+      "height": 1792
+    },
+    {
+      "slug": "stranglethorn-vale",
+      "name": "Stranglethorn Vale",
+      "width": 3328,
+      "height": 2304
+    },
+    {
+      "slug": "alterac-mountains",
+      "name": "Alterac Mountains",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "loch-modan",
+      "name": "Loch Modan",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "westfall",
+      "name": "Westfall",
+      "width": 3584,
+      "height": 2560
+    },
+    {
+      "slug": "deadwind-pass",
+      "name": "Deadwind Pass",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "redridge-mountains",
+      "name": "Redridge Mountains",
+      "width": 2560,
+      "height": 1536
+    },
+    {
+      "slug": "arathi-highlands",
+      "name": "Arathi Highlands",
+      "width": 4096,
+      "height": 2560
+    },
     {
       "slug": "burning-steppes",
       "name": "Burning Steppes",
@@ -9,8 +99,200 @@
       "height": 2048
     },
     {
+      "slug": "the-hinterlands",
+      "name": "The Hinterlands",
+      "width": 2304,
+      "height": 1536
+    },
+    {
       "slug": "searing-gorge",
       "name": "Searing Gorge",
+      "width": 2560,
+      "height": 2048
+    },
+    {
+      "slug": "tirisfal-glades",
+      "name": "Tirisfal Glades",
+      "width": 2304,
+      "height": 1792
+    },
+    {
+      "slug": "silverpine-forest",
+      "name": "Silverpine Forest",
+      "width": 2304,
+      "height": 1792
+    },
+    {
+      "slug": "eastern-plaguelands",
+      "name": "Eastern Plaguelands",
+      "width": 2304,
+      "height": 1536
+    },
+    {
+      "slug": "hillsbrad-foothills",
+      "name": "Hillsbrad Foothills",
+      "width": 3072,
+      "height": 2560
+    },
+    {
+      "slug": "undercity",
+      "name": "Undercity",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "slug": "stormwind-city",
+      "name": "Stormwind City",
+      "width": 2560,
+      "height": 2048
+    },
+    {
+      "slug": "ironforge",
+      "name": "Ironforge",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "slug": "riverglades",
+      "name": "Riverglades",
+      "width": 2560,
+      "height": 1792
+    },
+    {
+      "slug": "durotar",
+      "name": "Durotar",
+      "width": 2816,
+      "height": 2048
+    },
+    {
+      "slug": "dustwallow-marsh",
+      "name": "Dustwallow Marsh",
+      "width": 2816,
+      "height": 2048
+    },
+    {
+      "slug": "azshara",
+      "name": "Azshara",
+      "width": 2560,
+      "height": 2048
+    },
+    {
+      "slug": "the-barrens",
+      "name": "The Barrens",
+      "width": 2560,
+      "height": 1792
+    },
+    {
+      "slug": "teldrassil",
+      "name": "Teldrassil",
+      "width": 2816,
+      "height": 2048
+    },
+    {
+      "slug": "darkshore",
+      "name": "Darkshore",
+      "width": 3328,
+      "height": 2304
+    },
+    {
+      "slug": "mulgore",
+      "name": "Mulgore",
+      "width": 3072,
+      "height": 2304
+    },
+    {
+      "slug": "ashenvale",
+      "name": "Ashenvale",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "feralas",
+      "name": "Feralas",
+      "width": 3584,
+      "height": 2560
+    },
+    {
+      "slug": "felwood",
+      "name": "Felwood",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "thousand-needles",
+      "name": "Thousand Needles",
+      "width": 2560,
+      "height": 1536
+    },
+    {
+      "slug": "desolace",
+      "name": "Desolace",
+      "width": 2304,
+      "height": 1536
+    },
+    {
+      "slug": "stonetalon-mountains",
+      "name": "Stonetalon Mountains",
+      "width": 2816,
+      "height": 1792
+    },
+    {
+      "slug": "tanaris",
+      "name": "Tanaris",
+      "width": 3584,
+      "height": 2304
+    },
+    {
+      "slug": "ungoro-crater",
+      "name": "Un'Goro Crater",
+      "width": 3584,
+      "height": 2560
+    },
+    {
+      "slug": "moonglade",
+      "name": "Moonglade",
+      "width": 2560,
+      "height": 1536
+    },
+    {
+      "slug": "mount-hyjal",
+      "name": "Mount Hyjal",
+      "width": 4096,
+      "height": 2560
+    },
+    {
+      "slug": "winterspring",
+      "name": "Winterspring",
+      "width": 3584,
+      "height": 2304
+    },
+    {
+      "slug": "silithus",
+      "name": "Silithus",
+      "width": 3584,
+      "height": 2560
+    },
+    {
+      "slug": "orgrimmar",
+      "name": "Orgrimmar",
+      "width": 2048,
+      "height": 1536
+    },
+    {
+      "slug": "thunder-bluff",
+      "name": "Thunder Bluff",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "slug": "darnassus",
+      "name": "Darnassus",
+      "width": 1536,
+      "height": 1536
+    },
+    {
+      "slug": "shendralas",
+      "name": "Shen'dralas",
       "width": 2560,
       "height": 2048
     }

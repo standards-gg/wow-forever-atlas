@@ -14,6 +14,8 @@ export interface ContinentGeography {
   worldBounds: WorldBounds;
   /** This continent's placement within the shared "Azeroth" world map (UiMapID 947), as a 0-1 box. */
   worldMapPlacement: { uiMinX: number; uiMinY: number; uiMaxX: number; uiMaxY: number };
+  /** Map.WdtFileDataID — the continent's own WDT, for per-zone terrain-tile extraction. */
+  wdtFileDataId: number;
 }
 
 export interface ZoneGeography {
@@ -52,10 +54,12 @@ function toNum(v: string): number {
 export function buildWorldGeography(
   areaTableCsv: string,
   uiMapAssignmentCsv: string,
+  mapCsv: string,
   build: string
 ): WorldGeography {
   const areas = parseCsv(areaTableCsv);
   const assignments = parseCsv(uiMapAssignmentCsv);
+  const maps = parseCsv(mapCsv);
 
   const worldMapRows = assignments.filter((a) => Number(a.UiMapID) === AZEROTH_UI_MAP_ID && a.AreaID === "0");
 
@@ -65,12 +69,15 @@ export function buildWorldGeography(
   ].map(({ mapId, uiMapId, name }) => {
     const own = assignments.find((a) => Number(a.UiMapID) === uiMapId && a.AreaID === "0");
     const placement = worldMapRows.find((a) => a.MapID === String(mapId));
+    const mapRow = maps.find((m) => m.ID === String(mapId));
     if (!own) throw new Error(`No self-assignment row found for continent UiMapID ${uiMapId}`);
     if (!placement) throw new Error(`No Azeroth world-map placement row found for MapID ${mapId}`);
+    if (!mapRow) throw new Error(`No Map.db2 row found for MapID ${mapId}`);
     return {
       mapId,
       uiMapId,
       name,
+      wdtFileDataId: Number(mapRow.WdtFileDataID),
       worldBounds: {
         minX: toNum(own.Region_0),
         minY: toNum(own.Region_1),

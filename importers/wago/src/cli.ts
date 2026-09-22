@@ -21,12 +21,13 @@ const outputPath = join(here, "..", "..", "..", "apps", "web", "public", "data",
 
 async function main() {
   const build = await fetchLatestBuild();
-  console.error(`Fetching AreaTable + UiMapAssignment @ build ${build}`);
-  const [areaTableCsv, uiMapAssignmentCsv] = await Promise.all([
+  console.error(`Fetching AreaTable + UiMapAssignment + Map @ build ${build}`);
+  const [areaTableCsv, uiMapAssignmentCsv, mapCsv] = await Promise.all([
     fetchDb2Csv("AreaTable", build),
     fetchDb2Csv("UiMapAssignment", build),
+    fetchDb2Csv("Map", build),
   ]);
-  const world = buildWorldGeography(areaTableCsv, uiMapAssignmentCsv, build);
+  const world = buildWorldGeography(areaTableCsv, uiMapAssignmentCsv, mapCsv, build);
   console.error(`Built geography: ${world.continents.length} continents, ${world.zones.length} zones.`);
   mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, JSON.stringify(world, null, 2));
