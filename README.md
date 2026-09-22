@@ -85,12 +85,6 @@ and `docs/DATA_MODEL.md`.
   one's `README.md` for why (license status, or "not a real data source"
   per Phase 0 research).
 
-**Deliberately not committed to this public repo:**
-- The extracted terrain PNGs themselves (`apps/web/public/data/tiles/*.png`)
-  are real, copyrighted Blizzard game art, not data this project generated
-  — gitignored on purpose. Regenerate them locally (you need your own
-  licensed client install): `npm run extract:minimaps --workspace=@atlas/importer-wow-client`.
-
 ## Docs index
 
 - `docs/PROJECT_RECON.md`, `docs/DATA_SOURCE_MATRIX.md` — Phase 0 synthesis

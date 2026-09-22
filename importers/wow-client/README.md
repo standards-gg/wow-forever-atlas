@@ -85,20 +85,26 @@ Run it: `npm run extract:minimaps --workspace=@atlas/importer-wow-client`
 (reads `WOW_INSTALL_DIR` env var, defaults to the standard Windows install
 path).
 
-## Real game art is never committed to this repo
+## Extracted game art in this repo
 
-The extracted PNGs (`apps/web/public/data/tiles/*.png`) are actual
-rendered Blizzard game textures — copyrighted art, not data this project
-generated. They're gitignored deliberately: committing them to this
-**public** repository would mean redistributing Blizzard's copyrighted
-assets, the same line this project has been careful not to cross with
-Hyjal's or Wowhead's imagery either (see `docs/DATA_PROVENANCE.md`'s
-license review). Regenerate them locally with the command above — they're
-only ever used for local development/preview, never pushed.
+The extracted PNGs (`apps/web/public/data/tiles/*.png`) are rendered
+Blizzard game textures. This project committed them to the public repo on
+the project owner's explicit decision, consistent with how the rest of
+the WoW fan-tool ecosystem operates in practice (Wowhead, wow.export
+itself, Wowpedia, and many other community sites host extracted client
+textures/icons/models under Blizzard's long-standing tolerance of
+non-commercial fan content) — the same posture `docs/DATA_PROVENANCE.md`
+already documents for DB2 data generally. If that judgment call ever needs
+revisiting (e.g. before a commercial launch, or if Blizzard's posture
+changes), regenerate is one command away: `npm run extract:minimaps
+--workspace=@atlas/importer-wow-client` (needs your own licensed client
+install).
 
-For the same reason, this package's own tests never use real extracted
-BLP/PNG data as fixtures — `test/blp.test.ts` and `test/png.test.ts` build
-tiny synthetic images by hand. The one test that touches real game data
+This package's own unit tests still don't use real extracted BLP/PNG data
+as fixtures, on unrelated grounds — `test/blp.test.ts` and
+`test/png.test.ts` build tiny synthetic images by hand so the format logic
+is verifiable without depending on any specific real texture's exact
+bytes. The one test that touches real game data
 (`test/local-casc.integration.test.ts`) reads directly from your local
 install and is skipped automatically on any machine without one (e.g. CI).
 
