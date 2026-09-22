@@ -5,6 +5,22 @@ Hyjal.cc's confirmed architecture (a reference implementation, not a data
 source — nothing here implies importing Hyjal's own data or assets; see
 `DATA_PROVENANCE.md`'s license posture for Hyjal).
 
+## Update: real terrain extraction is now implemented
+
+This document originally treated real map imagery as designed-but-unbuilt,
+blocked on a licensed client install. That block is resolved: the project
+owner confirmed a local WoW: Forever install, and `importers/wow-client`
+(added in a later Phase 2 session) reads that install's CASC storage
+directly — no `wow.export` GUI involved, since it turned out to have no
+CLI/headless mode — and extracts real minimap textures for Burning
+Steppes/Searing Gorge. See `importers/wow-client/README.md` for the full
+technical account (CASC/BLTE/BLP format details, empirically-verified WDT
+`MAID` chunk layout, and MIT attribution to wow.export, whose source
+informed this implementation). Real terrain PNGs are deliberately
+gitignored (copyrighted Blizzard art, never committed to this public repo)
+— the rest of this document's static-manifest/tile-pyramid design remains
+the target architecture for scaling this to the full world.
+
 ## The reference pattern, confirmed
 
 Hyjal.cc (`SOURCE_HYJAL.md` + this phase's supplement) is a **fully static

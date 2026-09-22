@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { loadAtlasDataset } from "@/lib/atlas-data";
 import { findContinentBySlug, loadWorldGeography, zoneRectInContinent } from "@/lib/world-data";
 import { slugify } from "@/lib/slug";
+import { loadTileManifestEntries } from "@/lib/tiles";
 import { PanZoomCanvas } from "@/components/PanZoomCanvas";
 import { TerritoryRegion } from "@/components/TerritoryRegion";
 
@@ -19,6 +20,11 @@ export default async function ContinentPage({ params }: { params: { slug: string
   const entityDataset = await loadAtlasDataset().catch(() => null);
   const zoneNamesWithData = new Set(entityDataset?.zones.map((z) => z.name) ?? []);
 
+  // Real in-game terrain extracted directly from the client (see
+  // importers/wow-client/README.md) — only Burning Steppes/Searing Gorge so far.
+  const tileEntries = await loadTileManifestEntries();
+  const realTileUrlBySlug = new Map(tileEntries.map((t) => [t.slug, `/data/tiles/${t.slug}.png`]));
+
   return (
     <main className="mx-auto max-w-5xl px-6 py-10">
       <Link href="/" className="text-xs text-[#8a7267] hover:text-ember-400">
@@ -31,15 +37,19 @@ export default async function ContinentPage({ params }: { params: { slug: string
 
       <div className="mt-6">
         <PanZoomCanvas ariaLabel={`Map of ${continent.name}`}>
-          {zones.map((zone) => (
-            <TerritoryRegion
-              key={zone.areaId}
-              rect={zoneRectInContinent(zone, continent)}
-              label={zone.name}
-              href={`/zones/${slugify(zone.name)}`}
-              hasData={zoneNamesWithData.has(zone.name)}
-            />
-          ))}
+          {zones.map((zone) => {
+            const slug = slugify(zone.name);
+            return (
+              <TerritoryRegion
+                key={zone.areaId}
+                rect={zoneRectInContinent(zone, continent)}
+                label={zone.name}
+                href={`/zones/${slug}`}
+                hasData={zoneNamesWithData.has(zone.name)}
+                realTileUrl={realTileUrlBySlug.get(slug)}
+              />
+            );
+          })}
         </PanZoomCanvas>
       </div>
 

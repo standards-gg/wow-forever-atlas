@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { findZoneByName, getZoneContents, loadAtlasDataset } from "@/lib/atlas-data";
 import { findZoneBySlug, loadWorldGeography } from "@/lib/world-data";
 import { slugify } from "@/lib/slug";
+import { findRealTileImage } from "@/lib/tiles";
 import { DiscoveryPanel } from "@/components/DiscoveryPanel";
 import { ZoneMap } from "@/components/ZoneMap";
 
@@ -14,6 +15,7 @@ export default async function ZonePage({ params }: { params: { slug: string } })
   const continent = world.continents.find((c) => c.mapId === geography.continentMapId);
   const dataset = await loadAtlasDataset().catch(() => null);
   const entityZone = dataset ? findZoneByName(dataset, geography.name) : undefined;
+  const realTileImage = await findRealTileImage(params.slug);
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-10">
@@ -27,7 +29,7 @@ export default async function ZonePage({ params }: { params: { slug: string } })
 
       {!dataset || !entityZone ? (
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[2fr_1fr]">
-          <ZoneMap pins={[]} zoneName={geography.name} />
+          <ZoneMap pins={[]} zoneName={geography.name} realTileImage={realTileImage} />
           <div className="rounded-md border border-white/10 bg-white/5 p-4 text-sm text-[#c9b8ae]">
             <p className="font-medium text-ember-400">No entity data imported for this zone yet.</p>
             <p className="mt-2 text-xs text-[#8a7267]">
@@ -56,7 +58,7 @@ export default async function ZonePage({ params }: { params: { slug: string } })
             const { quests, npcs, flightPaths, pins } = getZoneContents(dataset, entityZone);
             return (
               <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[2fr_1fr]">
-                <ZoneMap pins={pins} zoneName={geography.name} />
+                <ZoneMap pins={pins} zoneName={geography.name} realTileImage={realTileImage} />
                 <DiscoveryPanel quests={quests} flightPaths={flightPaths} npcs={npcs} />
               </div>
             );

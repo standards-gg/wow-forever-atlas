@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-09-22T14:21:34.667Z",
+  "tilePixels": 512,
+  "zones": [
+    {
+      "slug": "burning-steppes",
+      "name": "Burning Steppes",
+      "width": 3072,
+      "height": 2048
+    },
+    {
+      "slug": "searing-gorge",
+      "name": "Searing Gorge",
+      "width": 2560,
+      "height": 2048
+    }
+  ]
+}

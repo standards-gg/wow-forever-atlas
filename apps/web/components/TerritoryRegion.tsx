@@ -14,6 +14,7 @@ export function TerritoryRegion({
   href,
   biomeName,
   hasData,
+  realTileUrl,
 }: {
   rect: UiRect;
   label: string;
@@ -22,12 +23,14 @@ export function TerritoryRegion({
   biomeName?: string;
   /** Visually distinguishes zones with real imported entity data from ones that are geography-only so far. */
   hasData?: boolean;
+  /** Real in-game terrain, extracted from the client (see importers/wow-client) — used instead of the biome gradient when present. */
+  realTileUrl?: string;
 }) {
   const biome = getBiome(biomeName ?? label);
   return (
     <Link
       href={href}
-      className={`group absolute flex items-center justify-center overflow-hidden rounded-sm border text-center shadow-inner transition hover:z-10 hover:scale-[1.03] hover:shadow-lg focus:z-10 focus:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-ember-400 ${
+      className={`group absolute flex items-center justify-center overflow-hidden rounded-sm border bg-cover bg-center text-center shadow-inner transition hover:z-10 hover:scale-[1.03] hover:shadow-lg focus:z-10 focus:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-ember-400 ${
         hasData ? "border-ember-400 ring-1 ring-ember-400/70" : "border-black/40 hover:border-white/40"
       }`}
       style={{
@@ -35,7 +38,7 @@ export function TerritoryRegion({
         top: `${rect.y}%`,
         width: `${rect.width}%`,
         height: `${rect.height}%`,
-        backgroundImage: biome.gradient,
+        backgroundImage: realTileUrl ? `url(${realTileUrl})` : biome.gradient,
       }}
     >
       <span

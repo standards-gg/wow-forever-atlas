@@ -18,13 +18,19 @@ const KIND_STYLE: Record<MapPin["kind"], string> = {
   flight_path: "bg-sky-400 border-sky-200",
 };
 
+export interface RealTileImage {
+  url: string;
+  width: number;
+  height: number;
+}
+
 /**
- * A placeholder 2D map surface: real terrain/imagery tiles are not part of
- * this vertical slice (see docs/MAP_ARCHITECTURE.md — that pipeline,
- * wow.export -> tiling -> PMTiles, is real but unbuilt work, not something
- * to fake here). Pins are plotted at their real coordinates so the
- * entity/graph/coordinate pipeline is genuinely demonstrated; the
- * background is an honest placeholder, not a fabricated map image.
+ * The zone map surface. When a real tile image is available (extracted
+ * directly from the game client — see importers/wow-client/README.md,
+ * currently Burning Steppes and Searing Gorge), it's rendered as the
+ * actual background. Otherwise this falls back to a generated biome
+ * gradient (lib/biome.ts) rather than a fabricated map image — most
+ * zones don't have extracted imagery yet.
  *
  * Pins are real, focusable <button> elements with visible accessible
  * names — deliberately not Freier Bund's confirmed anti-pattern of
@@ -32,23 +38,40 @@ const KIND_STYLE: Record<MapPin["kind"], string> = {
  * (docs/SOURCE_FREIERBUND.md's "UX Patterns Worth Preserving" section
  * calls this out explicitly as something to avoid).
  */
-export function ZoneMap({ pins, zoneName }: { pins: MapPin[]; zoneName: string }) {
+export function ZoneMap({
+  pins,
+  zoneName,
+  realTileImage,
+}: {
+  pins: MapPin[];
+  zoneName: string;
+  realTileImage?: RealTileImage;
+}) {
   const [selected, setSelected] = useState<MapPin | null>(null);
   const biome = getBiome(zoneName);
 
   return (
     <div className="flex flex-col gap-3">
       <div
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-white/10"
+        className="relative w-full overflow-hidden rounded-lg border border-white/10 bg-cover bg-center"
         style={{
-          backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 35%), radial-gradient(circle at 75% 65%, rgba(255,255,255,0.04) 0%, transparent 40%), ${biome.gradient}`,
+          aspectRatio: realTileImage ? `${realTileImage.width} / ${realTileImage.height}` : "4 / 3",
+          backgroundImage: realTileImage
+            ? `url(${realTileImage.url})`
+            : `radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 35%), radial-gradient(circle at 75% 65%, rgba(255,255,255,0.04) 0%, transparent 40%), ${biome.gradient}`,
         }}
         role="group"
-        aria-label={`Map of ${zoneName} (${biome.label} biome, generated visual — real terrain imagery not yet implemented)`}
+        aria-label={
+          realTileImage
+            ? `Map of ${zoneName} (real in-game terrain, extracted from the client)`
+            : `Map of ${zoneName} (${biome.label} biome, generated visual — real terrain imagery not yet extracted)`
+        }
       >
-        <div className="absolute bottom-1 right-2 text-[9px] text-white/25">
-          {biome.label} &middot; generated visual, not real terrain &mdash; see docs/MAP_ARCHITECTURE.md
-        </div>
+        {!realTileImage && (
+          <div className="absolute bottom-1 right-2 text-[9px] text-white/25">
+            {biome.label} &middot; generated visual, not real terrain &mdash; see docs/MAP_ARCHITECTURE.md
+          </div>
+        )}
         {pins.map((pin) => (
           <button
             key={pin.id}

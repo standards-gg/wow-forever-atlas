@@ -10,3 +10,11 @@ coverage/
 .turbo/
 *.tsbuildinfo
 .scratch/
+
+# Real, rendered Blizzard game textures extracted from a local client install
+# (importers/wow-client) — copyrighted game art, not our data. Never commit
+# these to a public repo; regenerate locally with `npm run extract:minimaps
+# --workspace=@atlas/importer-wow-client` (requires your own licensed client
+# install; see importers/wow-client/README.md).
+apps/web/public/data/tiles/*.png
+importers/wow-client/*.png
