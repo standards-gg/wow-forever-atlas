@@ -164,22 +164,48 @@ useful than a silently-wrong converted one. This directly matches
 QuestieDB's own confirmed practice (leaving genuinely unresolvable points
 untouched rather than forcing a bad transform).
 
-## Worked example: Burning Steppes, using real Phase 1 data
+## Worked example: Burning Steppes, using real Phase 1 data — corrected in Phase 2
 
-- Zone: `AreaTable.ID = 46` (confirmed, both DB2 and QuestieDB's
-  `zoneIds.lua` agree), `UiMapID = 1428` (confirmed, both DB2's
-  `UiMapAssignment` and QuestieDB's `areaIdToUiMapId.lua` agree — a genuine,
-  independently-corroborated cross-source match).
-- World-space bounding box (confirmed, `UiMapAssignment` row for
-  `AreaID=46`): X ∈ `[-8983.33, -7031.25]`, Y ∈ `[-3195.83, -266.67]`.
-- A real point in this zone, "Flame Crest" flight master, confirmed at
-  world-space `(-7504.03, -2187.54, 165.53)`. Converting to UI fraction:
-  `ui_x = (-7504.03 - (-8983.33)) / (-7031.25 - (-8983.33)) = 1479.3 / 1952.08
-  ≈ 0.758`, `ui_y = (-2187.54 - (-3195.83)) / (-266.67 - (-3195.83)) = 1008.29
-  / 2929.16 ≈ 0.344` — i.e. roughly 76% across, 34% down the zone's map
-  tile, which is directionally consistent with Flame Crest's known
-  in-game position (northeastern portion of Burning Steppes). This
-  worked example should become a Phase 2 unit-test fixture.
+**Errata**: this worked example originally computed `ui_x` directly from
+world X and `ui_y` directly from world Y, and called the result
+"directionally consistent" purely by eyeballing it — it was never checked
+against a second, independent source. When Phase 2 implemented this as
+real code (`packages/shared/src/coordinates.ts`) and cross-validated it
+against AllTheThings' own `fp()` flight-path records for the *same two
+real entities* (matched by ID: DB2's `TaxiNodes.ID` 70/71 = ATT's `fp(70)`/
+`fp(71)`, both "Flame Crest"/"Morgan's Vigil, Burning Steppes"), **the
+original formula was confirmed wrong** — off by roughly 10 percentage
+points on both axes, in a way that turned out to be a rotation+flip, not
+random error. The corrected version is below; the lesson (verify against a
+second independent source, not just self-consistency) is now encoded
+directly in the code's own doc comment.
+
+- Zone: `AreaTable.ID = 46`, `UiMapID = 1428` (confirmed, cross-source
+  agreement — unaffected by the axis bug above).
+- World-space bounding box (confirmed): X ∈ `[-8983.333, -7031.2495]`,
+  Y ∈ `[-3195.833, -266.667]`.
+- **Axis convention (confirmed empirically, Phase 2)**: WoW's world-space
+  X axis points *north*, Y points *west*. The UI-map percentage convention
+  has x increasing *east* and y increasing *south* — i.e. it's a
+  rotation+flip of the world axes, not a direct copy. Concretely:
+  `ui_x = 100 * (1 - fracY)`, `ui_y = 100 * (1 - fracX)`, where
+  `fracX = (worldX - regionMinX)/(regionMaxX - regionMinX)` and `fracY`
+  is the equivalent for Y. This also matches the sign convention already
+  used by the `ADT_TILE` formula (`adt_col` derived from world Y,
+  `adt_row` from world X, both negated) — the two independently-derived
+  conventions are consistent with each other, which is a good sign neither
+  is a fluke.
+- **Real cross-source validation** (two independent points, not one):
+  - Flame Crest (`TaxiNodes.ID=70` / ATT `fp(70)`), world
+    `(-7504.03, -2187.54)` → computed UI percent `(65.58, 24.22)` vs. ATT's
+    own recorded `(65.6, 24.2)` — matches to within ATT's own 1-decimal
+    rounding.
+  - Morgan's Vigil (`TaxiNodes.ID=71` / ATT `fp(71)`), world
+    `(-8364.61, -2738.35)` → computed `(84.38, 68.30)` vs. ATT's `(84.4,
+    68.2)` — same result.
+- This is now a real unit test
+  (`packages/shared/test/coordinates.test.ts`), not just a worked example
+  in prose — both points are checked, plus an exact round-trip test.
 
 ## Open items (tracked in `OPEN_QUESTIONS.md`)
 
