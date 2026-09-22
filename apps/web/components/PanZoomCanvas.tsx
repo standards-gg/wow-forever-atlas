@@ -72,7 +72,8 @@ export function PanZoomCanvas({
     <div
       role="application"
       aria-label={ariaLabel}
-      className="relative aspect-[4/3] w-full touch-none select-none overflow-hidden rounded-lg border border-white/10 bg-[#0b0605]"
+      className="relative aspect-[4/3] w-full touch-none select-none overflow-hidden rounded-lg border border-white/10"
+      style={{ backgroundImage: "linear-gradient(160deg, #0d1f26 0%, #081014 60%, #05080a 100%)" }}
       onWheel={onWheel}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}

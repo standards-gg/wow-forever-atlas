@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { getBiome } from "@/lib/biome";
 
 export interface MapPin {
   id: string;
@@ -33,16 +34,20 @@ const KIND_STYLE: Record<MapPin["kind"], string> = {
  */
 export function ZoneMap({ pins, zoneName }: { pins: MapPin[]; zoneName: string }) {
   const [selected, setSelected] = useState<MapPin | null>(null);
+  const biome = getBiome(zoneName);
 
   return (
     <div className="flex flex-col gap-3">
       <div
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-white/10 bg-gradient-to-br from-[#3a2117] via-[#241109] to-[#150b06]"
+        className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-white/10"
+        style={{
+          backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 0%, transparent 35%), radial-gradient(circle at 75% 65%, rgba(255,255,255,0.04) 0%, transparent 40%), ${biome.gradient}`,
+        }}
         role="group"
-        aria-label={`Map of ${zoneName} (placeholder terrain — real imagery not yet implemented)`}
+        aria-label={`Map of ${zoneName} (${biome.label} biome, generated visual — real terrain imagery not yet implemented)`}
       >
-        <div className="absolute inset-0 flex items-center justify-center text-xs text-white/10">
-          map imagery not yet implemented &mdash; see docs/MAP_ARCHITECTURE.md
+        <div className="absolute bottom-1 right-2 text-[9px] text-white/25">
+          {biome.label} &middot; generated visual, not real terrain &mdash; see docs/MAP_ARCHITECTURE.md
         </div>
         {pins.map((pin) => (
           <button

@@ -26,22 +26,25 @@ export default async function ZonePage({ params }: { params: { slug: string } })
       <h1 className="mt-2 text-3xl font-semibold text-ember-400">{geography.name}</h1>
 
       {!dataset || !entityZone ? (
-        <div className="mt-8 rounded-md border border-white/10 bg-white/5 p-6 text-sm text-[#c9b8ae]">
-          <p className="font-medium text-ember-400">No entity data imported for this zone yet.</p>
-          <p className="mt-2 text-xs text-[#8a7267]">
-            Its geography (boundaries, position on {continent?.name ?? "its continent"}) is real,
-            pulled from Blizzard&apos;s own DB2 data &mdash; but quests/NPCs/flight paths for this
-            specific zone haven&apos;t been imported yet. Only Burning Steppes and Searing Gorge have
-            been run through the AllTheThings importer so far (the Phase 1 vertical slice). This is
-            an honest &ldquo;not yet imported&rdquo; state, not a broken page &mdash; see{" "}
-            <a
-              href="https://github.com/standards-gg/wow-forever-atlas/blob/master/docs/PHASE_1_REPORT.md"
-              className="underline hover:text-ember-400"
-            >
-              docs/PHASE_1_REPORT.md
-            </a>
-            .
-          </p>
+        <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[2fr_1fr]">
+          <ZoneMap pins={[]} zoneName={geography.name} />
+          <div className="rounded-md border border-white/10 bg-white/5 p-4 text-sm text-[#c9b8ae]">
+            <p className="font-medium text-ember-400">No entity data imported for this zone yet.</p>
+            <p className="mt-2 text-xs text-[#8a7267]">
+              Its geography (boundaries, position on {continent?.name ?? "its continent"}) is real,
+              pulled from Blizzard&apos;s own DB2 data &mdash; but quests/NPCs/flight paths for this
+              specific zone haven&apos;t been imported yet. Only Burning Steppes and Searing Gorge
+              have been run through the AllTheThings importer so far (the Phase 1 vertical slice).
+              This is an honest &ldquo;not yet imported&rdquo; state, not a broken page &mdash; see{" "}
+              <a
+                href="https://github.com/standards-gg/wow-forever-atlas/blob/master/docs/PHASE_1_REPORT.md"
+                className="underline hover:text-ember-400"
+              >
+                docs/PHASE_1_REPORT.md
+              </a>
+              .
+            </p>
+          </div>
         </div>
       ) : (
         <>
