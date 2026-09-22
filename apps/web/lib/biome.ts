@@ -103,3 +103,8 @@ const DEFAULT_BIOME: BiomeKey = "forest";
 export function getBiome(zoneName: string): Biome {
   return BIOMES[ZONE_BIOME[zoneName] ?? DEFAULT_BIOME];
 }
+
+/** A single flat CSS color for contexts (e.g. Leaflet layer styling) that can't render a gradient. */
+export function biomeSolidColor(biome: Biome): string {
+  return biome.gradient.match(/#[0-9a-f]{6}/i)?.[0] ?? "#333333";
+}
