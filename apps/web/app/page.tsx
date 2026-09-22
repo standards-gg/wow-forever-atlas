@@ -1,20 +1,45 @@
-import Link from "next/link";
+import { continentRectInWorld, loadWorldGeography } from "@/lib/world-data";
+import { slugify } from "@/lib/slug";
+import { PanZoomCanvas } from "@/components/PanZoomCanvas";
+import { TerritoryRegion } from "@/components/TerritoryRegion";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const world = await loadWorldGeography();
+
   return (
-    <main className="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-6 px-6 text-center">
-      <h1 className="text-4xl font-semibold tracking-tight text-ember-400">WoW Forever Atlas</h1>
-      <p className="text-balance text-sm leading-relaxed text-[#c9b8ae]">
-        A geographic/entity graph of Azeroth for World of Warcraft: Forever &mdash; the map is one
-        view of it, not the whole product. This is an early vertical slice built directly from live
-        AllTheThings data, not placeholder content.
+    <main className="mx-auto max-w-5xl px-6 py-10">
+      <h1 className="text-3xl font-semibold tracking-tight text-ember-400">WoW Forever Atlas</h1>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#c9b8ae]">
+        The world of Azeroth &mdash; positions and boundaries below are real, pulled directly from
+        the Forever client&apos;s own DB2 data (build {world.build}), not placeholders. Click a
+        continent to explore its zones. Drag to pan, scroll to zoom.
       </p>
-      <Link
-        href="/zones/burning-steppes"
-        className="rounded-md bg-ember-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-ember-400"
-      >
-        Explore Burning Steppes &rarr;
-      </Link>
+
+      <div className="mt-8">
+        <PanZoomCanvas ariaLabel="World map of Azeroth">
+          {world.continents.map((continent) => (
+            <TerritoryRegion
+              key={continent.mapId}
+              rect={continentRectInWorld(continent)}
+              label={continent.name}
+              href={`/continents/${slugify(continent.name)}`}
+            />
+          ))}
+        </PanZoomCanvas>
+      </div>
+
+      <p className="mt-4 text-xs text-[#6b584e]">
+        {world.zones.length} zones and cities mapped across {world.continents.length} continents.
+        Territory shapes are real-position bounding boxes from Blizzard&apos;s own zone data, not
+        terrain artwork yet &mdash; see{" "}
+        <a
+          href="https://github.com/standards-gg/wow-forever-atlas/blob/master/docs/MAP_ARCHITECTURE.md"
+          className="underline hover:text-ember-400"
+        >
+          docs/MAP_ARCHITECTURE.md
+        </a>{" "}
+        for the real-imagery pipeline.
+      </p>
     </main>
   );
 }

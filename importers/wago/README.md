@@ -1,36 +1,32 @@
 # Importer: Wago (DB2)
 
-**Status: not yet implemented.** Scaffolded per the requested
-`importers/{source}/` structure; no code has been written here yet.
+**Status: partially real.** `src/zones.ts` fetches `AreaTable` +
+`UiMapAssignment` from wago.tools for the current `wow_classic_beta` build
+and produces real, Blizzard-sourced world/continent/zone **geography**
+(bounding boxes and the real parent-child UiMap hierarchy — confirmed
+directly from `UiMap.ParentUiMapID`: 947 "Azeroth" → 1415 "Eastern
+Kingdoms"/1414 "Kalimdor" → each zone's own UiMapID). This is what powers
+the web app's world/continent map views. Run it:
 
-## What this importer should do, per `docs/RECOMMENDED_DATA_SOURCES.md`
+```bash
+npm run import:world --workspace=@atlas/importer-wago
+```
 
-Fetch DB2 tables from `wago.tools` for a pinned `wow_classic_beta` build
-(`https://wago.tools/db2/<Table>/csv?build=<build>`), for the confirmed
-relevant table set: `Map`, `AreaTable`, `UiMapAssignment`, `AreaPOI`,
-`GameObjects`, `TaxiNodes`, `QuestV2`/`QuestInfo`/`QuestSort`,
-`DungeonEncounter`, `Item`/`ItemSparse`. Normalize into `Continent`, `Zone`,
-`Location` (world-space), `FlightPath`, `Instance`, `Boss`, `Item` entities.
+Tested against real fetched fixtures (`fixtures/AreaTable.csv`,
+`fixtures/UiMapAssignment.csv`) — see `test/zones.test.ts`, including a
+check that the real 49 outdoor zones/cities are found, dungeon-interior
+AreaIDs (Blackrock Depths/Spire) are correctly excluded, and Kalimdor is
+placed west of Eastern Kingdoms on the shared world map, matching real
+Blizzard data.
 
-## Why it isn't built yet
+## What's still not implemented here
 
-1. **Licensing is unresolved** (`docs/DATA_PROVENANCE.md`'s A–F table marks
-   wago.tools `UNKNOWN — NEEDS MAINTAINER CONFIRMATION` for redistribution).
-   The AllTheThings importer was built first specifically because it has a
-   clean, complete MIT answer and doesn't block on this.
-2. Given the effort budget for this pass, one importer was built
-   completely and correctly (parser, normalizer, real tests against real
-   fetched data) rather than several built shallowly. AllTheThings was
-   chosen because it's the richest structured source for the vertical
-   slice's core content (quests, chains, NPCs).
-
-## Interface it should implement, for consistency with `importers/allthethings`
-
-- `fetch.ts` — HTTP GET against wago.tools' documented API, pinned to an
-  explicit build number.
-- `normalize.ts` — DB2 CSV rows → canonical entities, tagging every
-  `Location` with `coordinateSpace: "WORLD_SPACE"` (DB2's native space, per
-  `docs/COORDINATE_SYSTEM.md` — no conversion needed at ingestion, unlike
-  ATT's UI-percent coordinates).
-- Provenance: `source: "wago_db2"`, `sourceIdType` per table (e.g.
-  `"AreaTable.ID"`, `"TaxiNodes.ID"`), `buildNumber` always set.
+Per `docs/RECOMMENDED_DATA_SOURCES.md`, the rest of the confirmed-relevant
+DB2 table set (`AreaPOI`, `GameObjects`, `TaxiNodes`,
+`QuestV2`/`QuestInfo`/`QuestSort`, `DungeonEncounter`, `Item`/`ItemSparse`)
+is not yet fetched/normalized into canonical `NPCSpawn`/`FlightPath`/
+`Instance`/`Boss`/`Item` entities the way `importers/allthethings` does for
+quests. Also unresolved: `docs/DATA_PROVENANCE.md`'s licensing flag —
+wago.tools' redistribution terms are still `UNKNOWN — NEEDS MAINTAINER
+CONFIRMATION`. What's here is being used for local development only; get
+that answered before shipping this data publicly.
