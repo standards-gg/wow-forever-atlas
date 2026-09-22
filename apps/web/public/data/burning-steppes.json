@@ -1,0 +1,4115 @@
+{
+  "generatedAt": "2026-09-22T12:33:14.580Z",
+  "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+  "zoneFilesImported": [
+    "Burning Steppes",
+    "Searing Gorge"
+  ],
+  "continents": [
+    {
+      "atlasId": "atlas_continent_000001",
+      "name": "Eastern Kingdoms",
+      "isCustomForeverContent": false,
+      "provenance": []
+    }
+  ],
+  "zones": [
+    {
+      "atlasId": "atlas_zone_000001",
+      "continentId": "atlas_continent_000001",
+      "name": "Burning Steppes",
+      "provenance": [
+        {
+          "source": "wago_db2",
+          "sourceIdType": "AreaTable.ID",
+          "sourceId": "46",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "Cross-validated AreaID/UiMapID pair, not derived from this ATT file — see importers/allthethings/src/map-constants.ts"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_zone_000002",
+      "continentId": "atlas_continent_000001",
+      "name": "Searing Gorge",
+      "provenance": [
+        {
+          "source": "wago_db2",
+          "sourceIdType": "AreaTable.ID",
+          "sourceId": "51",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "Cross-validated AreaID/UiMapID pair, not derived from this ATT file — see importers/allthethings/src/map-constants.ts"
+        }
+      ]
+    }
+  ],
+  "quests": [
+    {
+      "atlasId": "atlas_quest_000001",
+      "name": "Arcanite",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000003",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7630",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000002",
+      "name": "Bell of Dethmoora",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000004",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7626",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000003",
+      "name": "Broodling Essence",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000005",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4726",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000004",
+      "name": "Doomsday Candle",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000004",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7628",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000005",
+      "name": "Extinguish the Firegut",
+      "levelRequirementMin": 48,
+      "levelRequirementMax": 48,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000006",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3823",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000006",
+      "name": "Felnok Steelspring",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4808",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000007",
+      "name": "FIFTY! YEP!",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000006",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4283",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000008",
+      "name": "Gor'tesh the Brute Lord",
+      "levelRequirementMin": 48,
+      "levelRequirementMax": 48,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000006",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3824",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000009",
+      "name": "Imp Delivery",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7629",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000010",
+      "name": "Krom'Grul",
+      "levelRequirementMin": 48,
+      "levelRequirementMax": 48,
+      "faction": "horde",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000007",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3822",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000011",
+      "name": "Libram of Constitution",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000008",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4481",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000012",
+      "name": "Libram of Resilience",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000008",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4483",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000013",
+      "name": "Libram of Rumination",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000008",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000014",
+      "name": "Libram of Tenacity",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000008",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4482",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000015",
+      "name": "Libram of Voracity",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000008",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4484",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000016",
+      "name": "Lord Banehollow",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000003",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7623",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000017",
+      "name": "Mor'zul Bloodbringer",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7562",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000018",
+      "name": "Ogre Head On A Stick = Party",
+      "levelRequirementMin": 48,
+      "levelRequirementMax": 48,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000006",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3825",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000019",
+      "name": "Rage of Blood",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000004",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7563",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000020",
+      "name": "Tablet of the Seven",
+      "levelRequirementMin": 50,
+      "levelRequirementMax": 50,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000009",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4296",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000021",
+      "name": "Wheel of the Black March",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000004",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7627",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000022",
+      "name": "Wildeyes",
+      "levelRequirementMin": 60,
+      "levelRequirementMax": 60,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7564",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000023",
+      "name": "At Last!",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3201",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000024",
+      "name": "Caught!",
+      "levelRequirementMin": 43,
+      "levelRequirementMax": 43,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4449",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000025",
+      "name": "Curse These Fat Fingers",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000012",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7723",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000026",
+      "name": "Divine Retribution",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3441",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000027",
+      "name": "Dwarven Justice",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000014",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3371",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000028",
+      "name": "Fiery Menace!",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000012",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7724",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000029",
+      "name": "Forging the Shaft",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3443",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000030",
+      "name": "Gaining Acceptance [Classic] / Gaining Even More Acceptance [Wrath+]",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000015",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7737",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000031",
+      "name": "Incendosaurs? Whateverosaur is More Like It",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000012",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7727",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000032",
+      "name": "JOB OPPORTUNITY: Culling the Competition",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7729",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000033",
+      "name": "Ledger from Tanaris",
+      "levelRequirementMin": 43,
+      "levelRequirementMax": 43,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4450",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000034",
+      "name": "Prayer to Elune (1/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000016",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3377",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000035",
+      "name": "Prayer to Elune (2/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000016",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3378",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000036",
+      "name": "Proof of Deed",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3182",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000037",
+      "name": "Release Them",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3372",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000038",
+      "name": "Restoring Fiery Flux Supplies via Heavy Leather",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000015",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8242",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000039",
+      "name": "Restoring Fiery Flux Supplies via Iron",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000015",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8241",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000040",
+      "name": "Restoring Fiery Flux Supplies via Kingsblood",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000015",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7736",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000041",
+      "name": "Rise, Obsidion!",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000017",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3566",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000042",
+      "name": "Set Them Ablaze!",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000018",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000043",
+      "name": "Shadoweaver",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000019",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3379",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000044",
+      "name": "Squire Maltrake",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3462",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000045",
+      "name": "STOLEN: Smithing Tuyere and Lookout's Spyglass",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7728",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000046",
+      "name": "Suntara Stones (1/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000020",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3367",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000047",
+      "name": "Suntara Stones (2/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3368",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000048",
+      "name": "The Flame's Casing",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3452",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000049",
+      "name": "The Flawless Flame",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3442",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000050",
+      "name": "The Horn of the Beast",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "alliance",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3181",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000051",
+      "name": "The Key to Freedom",
+      "levelRequirementMin": 43,
+      "levelRequirementMax": 43,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4451",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000052",
+      "name": "The Torch of Retribution (1/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000013",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3453",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000053",
+      "name": "The Torch of Retribution (2/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3454",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000054",
+      "name": "The Undermarket (1/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000019",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3385",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000055",
+      "name": "The Undermarket (2/2)",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000019",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3402",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000056",
+      "name": "Trinkets...",
+      "levelRequirementMin": 40,
+      "levelRequirementMax": 40,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3481",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000057",
+      "name": "WANTED: Overseer Maltorius",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7701",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_quest_000058",
+      "name": "What the Flux?",
+      "levelRequirementMin": 45,
+      "levelRequirementMax": 45,
+      "faction": "both",
+      "isRepeatable": false,
+      "isDaily": false,
+      "isWeekly": false,
+      "isMonthly": false,
+      "isYearly": false,
+      "isWarEffort": false,
+      "isAttunement": false,
+      "isInstanceQuest": false,
+      "isBreadcrumb": false,
+      "givenByNpcId": "atlas_npc_000015",
+      "sourceQuestIds": [],
+      "altQuestIds": [],
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7722",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    }
+  ],
+  "flightPaths": [
+    {
+      "atlasId": "atlas_flight_path_000001",
+      "name": "Flame Crest, Burning Steppes",
+      "locationId": "atlas_location_000001",
+      "faction": "horde",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "70",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_flight_path_000002",
+      "name": "Morgan's Vigil, Burning Steppes",
+      "locationId": "atlas_location_000002",
+      "faction": "alliance",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "71",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_flight_path_000003",
+      "name": "Thorium Point, Searing Gorge",
+      "locationId": "atlas_location_000024",
+      "faction": "alliance",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "74",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_flight_path_000004",
+      "name": "Thorium Point, Searing Gorge",
+      "locationId": "atlas_location_000025",
+      "faction": "horde",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "75",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "atlasId": "atlas_npc_000001",
+      "name": "Vahgruk <Wind Rider Master>",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "13177",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000002",
+      "name": "Borgus Stoutarm <Gryphon Master>",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "2299",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000003",
+      "name": "Gorzeeki Wildeyes",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "14437",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000004",
+      "name": "Mor'zul Bloodbringer",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "14436",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000005",
+      "name": "Tinkee Steamboil",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "10267",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000006",
+      "name": "Oralius",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "9177",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000007",
+      "name": "Sha'ni Proudtusk",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "9136",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000008",
+      "name": "Mathredis Firestar",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "9836",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000009",
+      "name": "Maxwort Uberglint",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "9536",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000010",
+      "name": "Lanie Reed <Gryphon Master>",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "2941",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000011",
+      "name": "Grisha <Wind Rider Master>",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "3305",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000012",
+      "name": "Hansel Heavyhands",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "14627",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000013",
+      "name": "Kalaran Windblade",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8479",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000014",
+      "name": "Curator Thorius",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8256",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000015",
+      "name": "Master Smith Burninate",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "14624",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000016",
+      "name": "Zamael Lunthistle",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8436",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000017",
+      "name": "Dying Archaeologist",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8417",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000018",
+      "name": "Squire Maltrake",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8509",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000019",
+      "name": "Nilith Lokrav",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8439",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_000020",
+      "name": "Dorius Stonetender",
+      "npcTypes": [],
+      "isBoss": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "NpcID",
+          "sourceId": "8284",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "inferred",
+          "transformation": "name extracted from ATT inline comment, not a structured field"
+        }
+      ]
+    }
+  ],
+  "npcSpawns": [
+    {
+      "atlasId": "atlas_npc_spawn_000001",
+      "npcId": "atlas_npc_000003",
+      "locationId": "atlas_location_000003",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7630",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000002",
+      "npcId": "atlas_npc_000004",
+      "locationId": "atlas_location_000004",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7626",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000003",
+      "npcId": "atlas_npc_000005",
+      "locationId": "atlas_location_000005",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4726",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000004",
+      "npcId": "atlas_npc_000004",
+      "locationId": "atlas_location_000006",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7628",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000005",
+      "npcId": "atlas_npc_000006",
+      "locationId": "atlas_location_000007",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3823",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000006",
+      "npcId": "atlas_npc_000006",
+      "locationId": "atlas_location_000009",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4283",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000007",
+      "npcId": "atlas_npc_000006",
+      "locationId": "atlas_location_000010",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3824",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000008",
+      "npcId": "atlas_npc_000007",
+      "locationId": "atlas_location_000012",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3822",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000009",
+      "npcId": "atlas_npc_000008",
+      "locationId": "atlas_location_000013",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4481",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000010",
+      "npcId": "atlas_npc_000008",
+      "locationId": "atlas_location_000014",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4483",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000011",
+      "npcId": "atlas_npc_000008",
+      "locationId": "atlas_location_000015",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000012",
+      "npcId": "atlas_npc_000008",
+      "locationId": "atlas_location_000016",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4482",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000013",
+      "npcId": "atlas_npc_000008",
+      "locationId": "atlas_location_000017",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4484",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000014",
+      "npcId": "atlas_npc_000003",
+      "locationId": "atlas_location_000018",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7623",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000015",
+      "npcId": "atlas_npc_000006",
+      "locationId": "atlas_location_000019",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3825",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000016",
+      "npcId": "atlas_npc_000004",
+      "locationId": "atlas_location_000020",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7563",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000017",
+      "npcId": "atlas_npc_000009",
+      "locationId": "atlas_location_000021",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4296",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000018",
+      "npcId": "atlas_npc_000004",
+      "locationId": "atlas_location_000022",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7627",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000019",
+      "npcId": "atlas_npc_000012",
+      "locationId": "atlas_location_000028",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7723",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000020",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000029",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3441",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000021",
+      "npcId": "atlas_npc_000014",
+      "locationId": "atlas_location_000030",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3371",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000022",
+      "npcId": "atlas_npc_000012",
+      "locationId": "atlas_location_000031",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7724",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000023",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000032",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3443",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000024",
+      "npcId": "atlas_npc_000015",
+      "locationId": "atlas_location_000033",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7737",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000025",
+      "npcId": "atlas_npc_000012",
+      "locationId": "atlas_location_000034",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7727",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000026",
+      "npcId": "atlas_npc_000016",
+      "locationId": "atlas_location_000037",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3377",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000027",
+      "npcId": "atlas_npc_000016",
+      "locationId": "atlas_location_000038",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3378",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000028",
+      "npcId": "atlas_npc_000015",
+      "locationId": "atlas_location_000041",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8242",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000029",
+      "npcId": "atlas_npc_000015",
+      "locationId": "atlas_location_000042",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8241",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000030",
+      "npcId": "atlas_npc_000015",
+      "locationId": "atlas_location_000043",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7736",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000031",
+      "npcId": "atlas_npc_000017",
+      "locationId": "atlas_location_000044",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3566",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000032",
+      "npcId": "atlas_npc_000018",
+      "locationId": "atlas_location_000045",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000033",
+      "npcId": "atlas_npc_000019",
+      "locationId": "atlas_location_000046",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3379",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000034",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000047",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3462",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000035",
+      "npcId": "atlas_npc_000020",
+      "locationId": "atlas_location_000049",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3367",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000036",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000051",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3452",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000037",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000052",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3442",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000038",
+      "npcId": "atlas_npc_000013",
+      "locationId": "atlas_location_000055",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3453",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000039",
+      "npcId": "atlas_npc_000019",
+      "locationId": "atlas_location_000057",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3385",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000040",
+      "npcId": "atlas_npc_000019",
+      "locationId": "atlas_location_000058",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3402",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_npc_spawn_000041",
+      "npcId": "atlas_npc_000015",
+      "locationId": "atlas_location_000061",
+      "isPatrol": false,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7722",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified"
+        }
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "atlasId": "atlas_location_000001",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.6,
+      "y": 24.2,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "70",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000002",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 84.4,
+      "y": 68.2,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "71",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000003",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.4,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7630",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000004",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.6,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7626",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000005",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.2,
+      "y": 23.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4726",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000006",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.6,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7628",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000007",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 84.6,
+      "y": 68.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3823",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000008",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.2,
+      "y": 23.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4808",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000009",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 84.6,
+      "y": 68.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4283",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000010",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 84.6,
+      "y": 68.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3824",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000011",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.4,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7629",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000012",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 79.8,
+      "y": 45.4,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3822",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000013",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65,
+      "y": 23.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4481",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000014",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65,
+      "y": 23.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4483",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000015",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65,
+      "y": 23.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000016",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65,
+      "y": 23.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4482",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000017",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65,
+      "y": 23.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4484",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000018",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.4,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7623",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000019",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 84.6,
+      "y": 68.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3825",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000020",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.6,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7563",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000021",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.2,
+      "y": 23.8,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4296",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000022",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.6,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7627",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000023",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 12.6,
+      "y": 31.6,
+      "zoneId": "atlas_zone_000001",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Burning Steppes.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7564",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.569Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.BURNING_STEPPES\" resolved to UiMapID 1428 / AreaID 46 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000024",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 37.8,
+      "y": 30.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "74",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000025",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 34.8,
+      "y": 30.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "TaxiNodes.ID",
+          "sourceId": "75",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000026",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 71.4,
+      "y": 16.2,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3201",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.IRONFORGE\" is not in the known-map table — zone left unresolved rather than guessed"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000027",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.5,
+      "y": 62.2,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4449",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000028",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.6,
+      "y": 27.8,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7723",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000029",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3441",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000030",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 71.4,
+      "y": 16.2,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3371",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.IRONFORGE\" is not in the known-map table — zone left unresolved rather than guessed"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000031",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.6,
+      "y": 27.8,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7724",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000032",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3443",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000033",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.8,
+      "y": 28.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7737",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000034",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.6,
+      "y": 27.8,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7727",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000035",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 37.7,
+      "y": 26.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7729",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000036",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.5,
+      "y": 62.2,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4450",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000037",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 29.6,
+      "y": 26.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3377",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000038",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 29.6,
+      "y": 26.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3378",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000039",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 18.2,
+      "y": 84,
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3182",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.LOCH_MODAN\" is not in the known-map table — zone left unresolved rather than guessed"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000040",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 41.2,
+      "y": 25.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3372",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000041",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.8,
+      "y": 28.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8242",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000042",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.8,
+      "y": 28.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "8241",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000043",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.8,
+      "y": 28.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7736",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000044",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 41.2,
+      "y": 25.6,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3566",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000045",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39.1,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3463",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000046",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 41,
+      "y": 75,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3379",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000047",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3462",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000048",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 37.7,
+      "y": 26.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7728",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000049",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 63.8,
+      "y": 60.8,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3367",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000050",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 74.5,
+      "y": 19.3,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3368",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000051",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3452",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000052",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3442",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000053",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 73,
+      "y": 77.2,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3181",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000054",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 65.6,
+      "y": 62.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "4451",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000055",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3453",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000056",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39.1,
+      "y": 39,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3454",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000057",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 41,
+      "y": 75,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3385",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000058",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 41,
+      "y": 75,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3402",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000059",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 39,
+      "y": 38.9,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "3481",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000060",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 37.7,
+      "y": 26.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7701",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    },
+    {
+      "atlasId": "atlas_location_000061",
+      "coordinateSpace": "UI_MAP_TRANSFORM",
+      "x": 38.8,
+      "y": 28.5,
+      "zoneId": "atlas_zone_000002",
+      "provenance": [
+        {
+          "source": "att",
+          "sourceUrl": "https://github.com/ATTWoWAddon/AllTheThings/blob/master/.contrib/.db/forever/zzOLD/02 - Outdoor Zones/02 Eastern Kingdoms/Searing Gorge.lua",
+          "sourceIdType": "QuestID",
+          "sourceId": "7722",
+          "sourceVersion": "7dac12df8c523de5519dcb84480cea0010b7ff12",
+          "importedAt": "2026-09-22T12:33:14.575Z",
+          "confidence": "verified",
+          "transformation": "mapIdentifier \"MAP.SEARING_GORGE\" resolved to UiMapID 1427 / AreaID 51 via a cross-validated known-map table"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "Quest 7630: raw prerequisite QuestIDs [7626, 7627, 7628] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7626: raw prerequisite QuestIDs [7564] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7628: raw prerequisite QuestIDs [7564] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 4808 (Felnok Steelspring) has a coord but no qg/qgs — Location atlas_location_000008 created but not attached to any NPC",
+    "Quest 4808: raw prerequisite QuestIDs [4726] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3824: raw prerequisite QuestIDs [3823] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7629 (Imp Delivery) has a coord but no qg/qgs — Location atlas_location_000011 created but not attached to any NPC",
+    "Quest 7629: raw prerequisite QuestIDs [7625, 7630] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3822: raw prerequisite QuestIDs [3821] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7623: raw prerequisite QuestIDs [7564] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7562 (Mor'zul Bloodbringer) has no coord field — no Location created",
+    "Quest 3825: raw prerequisite QuestIDs [3824] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7563: raw prerequisite QuestIDs [7562] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7627: raw prerequisite QuestIDs [7564] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7564 (Wildeyes) has a coord but no qg/qgs — Location atlas_location_000023 created but not attached to any NPC",
+    "Quest 7564: raw prerequisite QuestIDs [7563] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3201 (At Last!) has a coord but no qg/qgs — Location atlas_location_000026 created but not attached to any NPC",
+    "Quest 3201: raw prerequisite QuestIDs [3182] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 4449 (Caught!) has a coord but no qg/qgs — Location atlas_location_000027 created but not attached to any NPC",
+    "Quest 3371: raw prerequisite QuestIDs [3368] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3443: raw prerequisite QuestIDs [3442] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7737: raw prerequisite QuestIDs [7722] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7729 (JOB OPPORTUNITY: Culling the Competition) has a coord but no qg/qgs — Location atlas_location_000035 created but not attached to any NPC",
+    "Quest 4450 (Ledger from Tanaris) has a coord but no qg/qgs — Location atlas_location_000036 created but not attached to any NPC",
+    "Quest 4450: raw prerequisite QuestIDs [4449] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3378: raw prerequisite QuestIDs [3377] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3182 (Proof of Deed) has a coord but no qg/qgs — Location atlas_location_000039 created but not attached to any NPC",
+    "Quest 3182: raw prerequisite QuestIDs [3181] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3372 (Release Them) has a coord but no qg/qgs — Location atlas_location_000040 created but not attached to any NPC",
+    "Quest 3372: raw prerequisite QuestIDs [3371] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 8242: raw prerequisite QuestIDs [7722] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 8241: raw prerequisite QuestIDs [7722] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7736: raw prerequisite QuestIDs [7722] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3566: raw prerequisite QuestIDs [3372] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3463: raw prerequisite QuestIDs [3462] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3462: raw prerequisite QuestIDs [3454] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7728 (STOLEN: Smithing Tuyere and Lookout's Spyglass) has a coord but no qg/qgs — Location atlas_location_000048 created but not attached to any NPC",
+    "Quest 3368 (Suntara Stones (2/2)) has a coord but no qg/qgs — Location atlas_location_000050 created but not attached to any NPC",
+    "Quest 3368: raw prerequisite QuestIDs [3367] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3452: raw prerequisite QuestIDs [3443] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3442: raw prerequisite QuestIDs [3441] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3181 (The Horn of the Beast) has a coord but no qg/qgs — Location atlas_location_000053 created but not attached to any NPC",
+    "Quest 4451 (The Key to Freedom) has a coord but no qg/qgs — Location atlas_location_000054 created but not attached to any NPC",
+    "Quest 3453: raw prerequisite QuestIDs [3452] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3454 (The Torch of Retribution (2/2)) has a coord but no qg/qgs — Location atlas_location_000056 created but not attached to any NPC",
+    "Quest 3454: raw prerequisite QuestIDs [3453] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3385: raw prerequisite QuestIDs [3379] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3402: raw prerequisite QuestIDs [3385] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 3481 (Trinkets...) has a coord but no qg/qgs — Location atlas_location_000059 created but not attached to any NPC",
+    "Quest 3481: raw prerequisite QuestIDs [3463] recorded but not yet resolved to atlas_ids (requires a second pass over the whole import batch)",
+    "Quest 7701 (WANTED: Overseer Maltorius) has a coord but no qg/qgs — Location atlas_location_000060 created but not attached to any NPC"
+  ]
+}
