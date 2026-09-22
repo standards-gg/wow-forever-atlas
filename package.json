@@ -1,0 +1,21 @@
+{
+  "name": "wow-forever-atlas",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Interactive atlas and data platform for World of Warcraft: Forever.",
+  "workspaces": [
+    "packages/*",
+    "importers/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "import:att:burning-steppes": "npm run import:burning-steppes --workspace=@atlas/importer-allthethings",
+    "dev:web": "npm run dev --workspace=@atlas/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
