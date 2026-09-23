@@ -66,20 +66,39 @@ export function pointInZoneToWorld(zoneWorld: WorldRect, xPercent: number, yPerc
 }
 
 /**
- * Leaflet (with CRS.Simple) uses [lat, lng] pairs. We negate our y (which
- * increases south/downward, per docs/COORDINATE_SYSTEM.md's confirmed
- * screen/CSS-style convention used everywhere else in this app) so that
- * increasing y still moves visually downward on the rendered map instead
- * of flipping the whole world upside down.
+ * MapLibre GL JS expects real [lng, lat] pairs (it projects through Web
+ * Mercator), but our world is a flat, fictional plane with no real
+ * geography. The standard trick other fictional/game-world MapLibre
+ * projects use (Valheim, Minecraft map viewers, etc.) is to fabricate a
+ * small lng/lat window near the equator/prime meridian — Mercator
+ * distortion is proportional to how far from the equator you are, and at
+ * a span of a few degrees it's well under 0.1%, i.e. visually a flat
+ * plane. WORLD_SIZE (10000 units) maps to DEGREES_SPAN degrees; both
+ * raster images and marker/pin positions go through this same transform,
+ * so nothing can drift out of alignment relative to each other.
  */
-export function toLatLng(worldX: number, worldY: number): [number, number] {
-  return [-worldY, worldX];
+const DEGREES_SPAN = 4;
+const DEGREES_PER_UNIT = DEGREES_SPAN / WORLD_SIZE;
+
+/** [lng, lat] — negate y (which increases south/downward, our screen/CSS convention) since lat increases north. */
+export function toLngLat(worldX: number, worldY: number): [number, number] {
+  return [worldX * DEGREES_PER_UNIT, -worldY * DEGREES_PER_UNIT];
 }
 
-export function rectToLatLngBounds(rect: WorldRect): [[number, number], [number, number]] {
-  const sw = toLatLng(rect.x, rect.y + rect.height);
-  const ne = toLatLng(rect.x + rect.width, rect.y);
+export function rectToLngLatBounds(rect: WorldRect): [[number, number], [number, number]] {
+  const sw = toLngLat(rect.x, rect.y + rect.height);
+  const ne = toLngLat(rect.x + rect.width, rect.y);
   return [sw, ne];
+}
+
+/** Corner order MapLibre's `image` source expects: top-left, top-right, bottom-right, bottom-left. */
+export function rectToLngLatCorners(rect: WorldRect): [[number, number], [number, number], [number, number], [number, number]] {
+  return [
+    toLngLat(rect.x, rect.y),
+    toLngLat(rect.x + rect.width, rect.y),
+    toLngLat(rect.x + rect.width, rect.y + rect.height),
+    toLngLat(rect.x, rect.y + rect.height),
+  ];
 }
 
 export interface WorldZone {

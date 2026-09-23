@@ -131,6 +131,14 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
             <span className="inline-block h-2 w-2 rounded-full bg-sky-400" /> Flight paths
           </span>
         </div>
+
+        <button
+          type="button"
+          onClick={() => mapRef.current?.resetTilt()}
+          className="absolute bottom-3 right-3 z-[1000] rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
+        >
+          Top down
+        </button>
       </div>
 
       <aside className="flex flex-col gap-4 overflow-y-auto border-l border-white/10 bg-[#150b06] p-4">

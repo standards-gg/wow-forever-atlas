@@ -52,6 +52,39 @@ export function boxDownsample(
   return { data: out, width: newWidth, height: newHeight };
 }
 
+/**
+ * Some tiles inside a WDT's own grid are never sculpted with real terrain —
+ * they still get a minimap FileDataID, but it decodes to a flat, essentially
+ * single-color filler texture (confirmed empirically: the exact same RGB
+ * triplet, pixel-for-pixel, shows up across both continents at 10-19% of
+ * total area — real terrain art, even plain grass, always has natural
+ * texture noise and is never perfectly flat). Compositing these as opaque
+ * blocks produces visible flat-colored rectangles with no relation to real
+ * geography; treating them as "no data" (skip, leave transparent) instead
+ * lets the real terrain and the dark ocean background show through cleanly.
+ */
+export function isBlankTile(tile: DecodedImage): boolean {
+  const { rgba } = tile;
+  const pixelCount = rgba.length / 4;
+  let rSum = 0, gSum = 0, bSum = 0;
+  for (let i = 0; i < rgba.length; i += 4) {
+    rSum += rgba[i];
+    gSum += rgba[i + 1];
+    bSum += rgba[i + 2];
+  }
+  const rMean = rSum / pixelCount;
+  const gMean = gSum / pixelCount;
+  const bMean = bSum / pixelCount;
+
+  let variance = 0;
+  for (let i = 0; i < rgba.length; i += 4) {
+    variance += (rgba[i] - rMean) ** 2 + (rgba[i + 1] - gMean) ** 2 + (rgba[i + 2] - bMean) ** 2;
+  }
+  variance /= pixelCount;
+
+  return variance < 2;
+}
+
 export function blitTile(composite: Buffer, compositeWidth: number, tile: DecodedImage, destX: number, destY: number): void {
   for (let y = 0; y < tile.height; y++) {
     const srcStart = y * tile.width * 4;

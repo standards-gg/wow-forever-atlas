@@ -19,7 +19,7 @@ import { LocalCasc } from "./casc/local-casc.js";
 import { parseWdtMaid } from "./wdt.js";
 import { decodeBlp, type DecodedImage } from "./blp.js";
 import { encodePng } from "./png.js";
-import { blitTile, boxDownsample, downscaleFactor, slugify } from "./extract-shared.js";
+import { blitTile, boxDownsample, downscaleFactor, isBlankTile, slugify } from "./extract-shared.js";
 
 const INSTALL_DIR = process.env.WOW_INSTALL_DIR ?? "C:\\Program Files (x86)\\World of Warcraft";
 const PRODUCT = "wow_classic_beta";
@@ -92,6 +92,7 @@ async function main() {
           console.error(`  tile (col=${col}, row=${row}) failed: ${(err as Error).message}`);
           continue;
         }
+        if (isBlankTile(tile)) continue;
         blitTile(composite, width, tile, (col - minCol) * TILE_PIXELS, (row - minRow) * TILE_PIXELS);
         extracted++;
       }

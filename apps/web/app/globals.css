@@ -10,3 +10,11 @@ body {
   background-color: #0f0b09;
   color: #f2e9e4;
 }
+
+/* Leaflet's own default container background is a light gray, which shows
+   through any transparent gap in the terrain imagery (missing tiles,
+   unmapped ocean) as an obvious flat gray hole. A dark, ocean-like color
+   here makes those gaps read as water instead of a rendering bug. */
+.leaflet-container {
+  background-color: #0a1520 !important;
+}
