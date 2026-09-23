@@ -86,12 +86,30 @@ export class LocalCasc {
     await this.loadRoot();
   }
 
+  /**
+   * CASC .idx files are named `<bucket:2hex><version:8hex>.idx`. Patches
+   * leave old generations on disk (confirmed empirically: e.g. bucket "00"
+   * had five files on this install, versions 03 through 7f) — parsing all
+   * of them and keeping whichever key we see *first* means a later patch
+   * that relocated a file (a very common case for ground textures, which
+   * this project didn't need until adding real-terrain rendering) silently
+   * loses to its own stale, superseded entry. Only the highest version per
+   * bucket is authoritative.
+   */
   private async loadIndexes(): Promise<void> {
     const entries = await readdir(this.storageDir, { withFileTypes: true });
+    const latestByBucket = new Map<string, { name: string; version: number }>();
     for (const entry of entries) {
-      if (entry.isFile() && entry.name.endsWith(".idx")) {
-        await this.parseIndexFile(join(this.storageDir, entry.name));
-      }
+      if (!entry.isFile() || !entry.name.endsWith(".idx")) continue;
+      const stem = entry.name.slice(0, -4);
+      if (stem.length !== 10) continue;
+      const bucket = stem.slice(0, 2);
+      const version = Number.parseInt(stem.slice(2), 16);
+      const current = latestByBucket.get(bucket);
+      if (!current || version > current.version) latestByBucket.set(bucket, { name: entry.name, version });
+    }
+    for (const { name } of latestByBucket.values()) {
+      await this.parseIndexFile(join(this.storageDir, name));
     }
   }
 
