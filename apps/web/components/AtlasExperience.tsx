@@ -3,6 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { getZoneContents, type AtlasDataset } from "@/lib/atlas-data-core";
 import type { WorldContinent, WorldPin, WorldZone } from "@/lib/world-frame";
+import { buildShareUrl, type CameraState } from "@/lib/url-state";
 import { AtlasMap, type AtlasMapHandle } from "./AtlasMap";
 import { DiscoveryPanel } from "./DiscoveryPanel";
 
@@ -12,6 +13,8 @@ export interface AtlasExperienceProps {
   pins: WorldPin[];
   dataset: AtlasDataset | null;
   initialFocusSlug?: string;
+  initialPinId?: string;
+  initialCamera?: CameraState;
 }
 
 /**
@@ -20,11 +23,32 @@ export interface AtlasExperienceProps {
  * updates live as you click around the map — no page navigation, matching
  * the direct feedback that separate static pages weren't good enough.
  */
-export function AtlasExperience({ worldContinents, worldZones, pins, dataset, initialFocusSlug }: AtlasExperienceProps) {
+export function AtlasExperience({
+  worldContinents,
+  worldZones,
+  pins,
+  dataset,
+  initialFocusSlug,
+  initialPinId,
+  initialCamera,
+}: AtlasExperienceProps) {
   const mapRef = useRef<AtlasMapHandle>(null);
   const [selectedZoneSlug, setSelectedZoneSlug] = useState<string | null>(initialFocusSlug ?? null);
-  const [selectedPin, setSelectedPin] = useState<WorldPin | null>(null);
+  const [selectedPin, setSelectedPin] = useState<WorldPin | null>(
+    () => pins.find((p) => p.id === initialPinId) ?? null
+  );
   const [query, setQuery] = useState("");
+  const [shareCopied, setShareCopied] = useState(false);
+  const cameraRef = useRef<CameraState | undefined>(initialCamera);
+  // AtlasMap wires onCameraChange into a `map.on('moveend', ...)` listener
+  // inside a mount-only effect, so the callback it holds is frozen at
+  // whatever it closed over on the first render — reading React state
+  // directly there would always see stale (initial) values. A ref's
+  // `.current` is always live regardless of when the closure was created.
+  const selectionRef = useRef<{ zone: string | null; pin: string | undefined }>({
+    zone: initialFocusSlug ?? null,
+    pin: initialPinId,
+  });
 
   const selectedZone = worldZones.find((z) => z.slug === selectedZoneSlug) ?? null;
 
@@ -47,14 +71,29 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
     return pins.filter((p) => p.label.toLowerCase().includes(q)).slice(0, 8);
   }, [query, pins]);
 
+  /** Keeps the URL deep-linkable to the exact current view without ever triggering a page re-render or server round-trip. */
+  function writeUrl(selection: { zone?: string | null; pin?: string | null }) {
+    if (!cameraRef.current) return;
+    window.history.replaceState(null, "", buildShareUrl(cameraRef.current, selection));
+  }
+
+  function handleCameraChange(camera: CameraState) {
+    cameraRef.current = camera;
+    writeUrl(selectionRef.current);
+  }
+
   function handleSelectZone(slug: string | null) {
     setSelectedZoneSlug(slug);
     setSelectedPin(null);
+    selectionRef.current = { zone: slug, pin: undefined };
+    writeUrl(selectionRef.current);
   }
 
   function handleSelectPin(pin: WorldPin | null) {
     setSelectedPin(pin);
     if (pin) setSelectedZoneSlug(pin.zoneSlug);
+    selectionRef.current = { zone: pin?.zoneSlug ?? selectionRef.current.zone, pin: pin?.id };
+    writeUrl(selectionRef.current);
   }
 
   function handlePickZoneResult(zone: WorldZone) {
@@ -62,6 +101,8 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
     setSelectedZoneSlug(zone.slug);
     setSelectedPin(null);
     mapRef.current?.flyToZone(zone.slug);
+    selectionRef.current = { zone: zone.slug, pin: undefined };
+    writeUrl(selectionRef.current);
   }
 
   function handlePickPinResult(pin: WorldPin) {
@@ -69,6 +110,35 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
     setSelectedPin(pin);
     setSelectedZoneSlug(pin.zoneSlug);
     mapRef.current?.flyToPin(pin);
+    selectionRef.current = { zone: pin.zoneSlug, pin: pin.id };
+    writeUrl(selectionRef.current);
+  }
+
+  async function handleShareView() {
+    if (!cameraRef.current) return;
+    const url = window.location.origin + buildShareUrl(cameraRef.current, selectionRef.current);
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // Clipboard permission can be denied (stricter browser policies,
+      // non-secure contexts, embedded frames) — fall back to the
+      // legacy selection-based copy, which works without that permission.
+      const input = document.createElement("textarea");
+      input.value = url;
+      input.style.position = "fixed";
+      input.style.opacity = "0";
+      document.body.appendChild(input);
+      input.select();
+      try {
+        document.execCommand("copy");
+      } catch {
+        // Nothing more we can do — the URL is already reflected in the
+        // address bar via writeUrl(), so the user can copy it from there.
+      }
+      document.body.removeChild(input);
+    }
+    setShareCopied(true);
+    setTimeout(() => setShareCopied(false), 1500);
   }
 
   return (
@@ -80,12 +150,33 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
           worldZones={worldZones}
           pins={pins}
           focusSlug={initialFocusSlug}
+          initialCamera={initialCamera}
           onSelectZone={handleSelectZone}
           onSelectPin={handleSelectPin}
+          onCameraChange={handleCameraChange}
         />
 
         <div className="pointer-events-none absolute left-3 top-3 z-[1000] w-72 max-w-[calc(100vw-1.5rem)]">
-          <div className="pointer-events-auto">
+          <div className="pointer-events-auto flex gap-1.5">
+            <button
+              type="button"
+              onClick={() => mapRef.current?.flyToWorld()}
+              className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06]"
+            >
+              World
+            </button>
+            {worldContinents.map((wc) => (
+              <button
+                key={wc.slug}
+                type="button"
+                onClick={() => mapRef.current?.flyToContinent(wc.slug)}
+                className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06]"
+              >
+                {wc.continent.name}
+              </button>
+            ))}
+          </div>
+          <div className="pointer-events-auto mt-1.5">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -132,13 +223,22 @@ export function AtlasExperience({ worldContinents, worldZones, pins, dataset, in
           </span>
         </div>
 
-        <button
-          type="button"
-          onClick={() => mapRef.current?.resetTilt()}
-          className="absolute bottom-3 right-3 z-[1000] rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
-        >
-          Top down
-        </button>
+        <div className="absolute bottom-3 right-3 z-[1000] flex gap-2">
+          <button
+            type="button"
+            onClick={handleShareView}
+            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
+          >
+            {shareCopied ? "Link copied!" : "Share view"}
+          </button>
+          <button
+            type="button"
+            onClick={() => mapRef.current?.resetTilt()}
+            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
+          >
+            Top down
+          </button>
+        </div>
       </div>
 
       <aside className="flex flex-col gap-4 overflow-y-auto border-l border-white/10 bg-[#150b06] p-4">

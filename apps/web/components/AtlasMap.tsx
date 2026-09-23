@@ -12,6 +12,7 @@ import {
   type WorldPin,
   type WorldZone,
 } from "@/lib/world-frame";
+import type { CameraState } from "@/lib/url-state";
 
 // MapLibre zoom is real Web Mercator zoom (256px tile at z0), an entirely
 // different absolute scale than Leaflet's old CRS.Simple zoom — these were
@@ -26,13 +27,17 @@ export interface AtlasMapProps {
   worldZones: WorldZone[];
   pins: WorldPin[];
   focusSlug?: string;
+  initialCamera?: CameraState;
   onSelectZone: (slug: string | null) => void;
   onSelectPin: (pin: WorldPin | null) => void;
+  onCameraChange?: (camera: CameraState) => void;
 }
 
 export interface AtlasMapHandle {
   flyToZone: (slug: string) => void;
   flyToPin: (pin: WorldPin) => void;
+  flyToWorld: () => void;
+  flyToContinent: (slug: string) => void;
   resetTilt: () => void;
 }
 
@@ -47,8 +52,15 @@ export interface AtlasMapHandle {
  * mode, which a flat 2D renderer (Leaflet, this app's original renderer)
  * cannot do at all.
  */
+/** The bounding box of every zone's worldRect, combined — used to fit the whole world in view. */
+function computeWorldBounds(worldZones: WorldZone[]): [[number, number], [number, number]] {
+  const xs = worldZones.flatMap((z) => [z.worldRect.x, z.worldRect.x + z.worldRect.width]);
+  const ys = worldZones.flatMap((z) => [z.worldRect.y, z.worldRect.y + z.worldRect.height]);
+  return [toLngLat(Math.min(...xs), Math.max(...ys)), toLngLat(Math.max(...xs), Math.min(...ys))];
+}
+
 export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function AtlasMap(
-  { worldContinents, worldZones, pins, focusSlug, onSelectZone, onSelectPin },
+  { worldContinents, worldZones, pins, focusSlug, initialCamera, onSelectZone, onSelectPin, onCameraChange },
   ref
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -66,11 +78,20 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         const map = mapRef.current;
         if (map) map.flyTo({ center: toLngLat(pin.worldX, pin.worldY), zoom: Math.max(map.getZoom(), PIN_MIN_ZOOM + 1) });
       },
+      flyToWorld() {
+        const map = mapRef.current;
+        if (map && worldZones.length > 0) map.fitBounds(computeWorldBounds(worldZones), { padding: 20 });
+      },
+      flyToContinent(slug: string) {
+        const map = mapRef.current;
+        const wc = worldContinents.find((c) => c.slug === slug);
+        if (map && wc) map.fitBounds(rectToLngLatBounds(wc.worldRect), { padding: 20 });
+      },
       resetTilt() {
         mapRef.current?.easeTo({ pitch: 0, bearing: 0, duration: 300 });
       },
     }),
-    [worldZones]
+    [worldZones, worldContinents]
   );
 
   useEffect(() => {
@@ -275,18 +296,33 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         if (pin) onSelectPin(pin);
       });
 
+      const reportCamera = () => {
+        const center = map.getCenter();
+        onCameraChange?.({ lng: center.lng, lat: center.lat, zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing() });
+      };
+      // Registered before the initial fit below so that fit's own moveend
+      // (fired synchronously for an unanimated jump/fitBounds) is caught —
+      // otherwise the very first view never makes it into the URL until
+      // the user pans.
+      map.on("moveend", reportCamera);
+
+      // A shared URL (with exact camera params) restores precisely what was
+      // shared; otherwise fall back to a focused zone (a plainer `?zone=`
+      // link), then the whole world.
       const focusZone = focusSlug ? worldZones.find((z) => z.slug === focusSlug) : undefined;
-      if (focusZone) {
+      if (initialCamera) {
+        map.jumpTo({
+          center: [initialCamera.lng, initialCamera.lat],
+          zoom: initialCamera.zoom,
+          pitch: initialCamera.pitch,
+          bearing: initialCamera.bearing,
+        });
+      } else if (focusZone) {
         map.fitBounds(rectToLngLatBounds(focusZone.worldRect), { padding: 40, animate: false });
       } else if (worldZones.length > 0) {
-        const xs = worldZones.flatMap((z) => [z.worldRect.x, z.worldRect.x + z.worldRect.width]);
-        const ys = worldZones.flatMap((z) => [z.worldRect.y, z.worldRect.y + z.worldRect.height]);
-        const worldBounds: [[number, number], [number, number]] = [
-          toLngLat(Math.min(...xs), Math.max(...ys)),
-          toLngLat(Math.max(...xs), Math.min(...ys)),
-        ];
-        map.fitBounds(worldBounds, { padding: 20, animate: false });
+        map.fitBounds(computeWorldBounds(worldZones), { padding: 20, animate: false });
       }
+      reportCamera();
     });
 
     const resizeObserver = new ResizeObserver(() => map.resize());
