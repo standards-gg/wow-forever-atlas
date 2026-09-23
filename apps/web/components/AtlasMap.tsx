@@ -31,6 +31,8 @@ export interface AtlasMapProps {
   onSelectZone: (slug: string | null) => void;
   onSelectPin: (pin: WorldPin | null) => void;
   onCameraChange?: (camera: CameraState) => void;
+  /** Fires once the map's style and all its sources (including the large continent/zone terrain images) have finished loading. */
+  onReady?: () => void;
 }
 
 export interface AtlasMapHandle {
@@ -60,7 +62,7 @@ function computeWorldBounds(worldZones: WorldZone[]): [[number, number], [number
 }
 
 export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function AtlasMap(
-  { worldContinents, worldZones, pins, focusSlug, initialCamera, onSelectZone, onSelectPin, onCameraChange },
+  { worldContinents, worldZones, pins, focusSlug, initialCamera, onSelectZone, onSelectPin, onCameraChange, onReady },
   ref
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -104,8 +106,7 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         sources: {},
         // Missing tiles inside the real continent data (unmapped ADT grid
         // cells) render as this dark, ocean-like color instead of a flat
-        // gray "hole" — see globals.css's .leaflet-container override,
-        // carried over to MapLibre's own canvas background here.
+        // gray "hole".
         layers: [{ id: "background", type: "background", paint: { "background-color": "#0a1520" } }],
       },
       center: [0, 0],
@@ -323,6 +324,7 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         map.fitBounds(computeWorldBounds(worldZones), { padding: 20, animate: false });
       }
       reportCamera();
+      map.once("idle", () => onReady?.());
     });
 
     const resizeObserver = new ResizeObserver(() => map.resize());

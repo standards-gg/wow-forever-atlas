@@ -39,6 +39,7 @@ export function AtlasExperience({
   );
   const [query, setQuery] = useState("");
   const [shareCopied, setShareCopied] = useState(false);
+  const [mapReady, setMapReady] = useState(false);
   const cameraRef = useRef<CameraState | undefined>(initialCamera);
   // AtlasMap wires onCameraChange into a `map.on('moveend', ...)` listener
   // inside a mount-only effect, so the callback it holds is frozen at
@@ -154,14 +155,26 @@ export function AtlasExperience({
           onSelectZone={handleSelectZone}
           onSelectPin={handleSelectPin}
           onCameraChange={handleCameraChange}
+          onReady={() => setMapReady(true)}
         />
+
+        {!mapReady && (
+          <div className="pointer-events-none absolute inset-0 z-[900] flex flex-col items-center justify-center gap-3 bg-[#0a1520]">
+            <div
+              className="h-8 w-8 animate-spin rounded-full border-2 border-[#e8863a]/30 border-t-[#e8863a]"
+              role="status"
+              aria-label="Loading map"
+            />
+            <p className="text-sm text-[#8a7267]">Loading Azeroth&hellip;</p>
+          </div>
+        )}
 
         <div className="pointer-events-none absolute left-3 top-3 z-[1000] w-72 max-w-[calc(100vw-1.5rem)]">
           <div className="pointer-events-auto flex gap-1.5">
             <button
               type="button"
               onClick={() => mapRef.current?.flyToWorld()}
-              className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06]"
+              className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
             >
               World
             </button>
@@ -170,18 +183,23 @@ export function AtlasExperience({
                 key={wc.slug}
                 type="button"
                 onClick={() => mapRef.current?.flyToContinent(wc.slug)}
-                className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06]"
+                className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
               >
                 {wc.continent.name}
               </button>
             ))}
           </div>
           <div className="pointer-events-auto mt-1.5">
+            <label htmlFor="atlas-search" className="sr-only">
+              Find a place
+            </label>
             <input
+              id="atlas-search"
+              type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Find a place..."
-              className="w-full rounded-md border border-white/15 bg-[#150b06]/95 px-3 py-2 text-sm text-[#f2e9e4] shadow-lg placeholder:text-[#8a7267] focus:border-ember-400 focus:outline-none"
+              className="w-full rounded-md border border-white/15 bg-[#150b06]/95 px-3 py-2 text-sm text-[#f2e9e4] shadow-lg placeholder:text-[#8a7267] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
             />
             {(zoneResults.length > 0 || pinResults.length > 0) && (
               <ul className="mt-1 max-h-72 overflow-y-auto rounded-md border border-white/15 bg-[#150b06]/95 text-sm shadow-lg">
@@ -190,7 +208,7 @@ export function AtlasExperience({
                     <button
                       type="button"
                       onClick={() => handlePickZoneResult(z)}
-                      className="block w-full px-3 py-2 text-left hover:bg-white/10"
+                      className="block w-full px-3 py-2 text-left hover:bg-white/10 focus-visible:outline-none focus-visible:bg-white/10"
                     >
                       <span className="text-ember-400">{z.zone.name}</span>
                       <span className="ml-2 text-xs text-[#8a7267]">zone</span>
@@ -202,7 +220,7 @@ export function AtlasExperience({
                     <button
                       type="button"
                       onClick={() => handlePickPinResult(p)}
-                      className="block w-full px-3 py-2 text-left hover:bg-white/10"
+                      className="block w-full px-3 py-2 text-left hover:bg-white/10 focus-visible:outline-none focus-visible:bg-white/10"
                     >
                       {p.label}
                       <span className="ml-2 text-xs text-[#8a7267]">{p.kind === "flight_path" ? "flight path" : "quest giver"}</span>
@@ -227,14 +245,14 @@ export function AtlasExperience({
           <button
             type="button"
             onClick={handleShareView}
-            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
+            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
           >
             {shareCopied ? "Link copied!" : "Share view"}
           </button>
           <button
             type="button"
             onClick={() => mapRef.current?.resetTilt()}
-            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06]"
+            className="rounded-md bg-[#150b06]/80 px-3 py-1.5 text-xs font-medium text-[#c9b8ae] shadow hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
           >
             Top down
           </button>
