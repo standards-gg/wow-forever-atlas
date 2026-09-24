@@ -22,16 +22,20 @@ import { ByteReader } from "./casc/byte-reader.js";
 
 const MAID_TAG = "MAID";
 const RECORD_FIELD_COUNT = 8;
+const TEX0_ADT_FIELD_INDEX = 3;
 const MINIMAP_FIELD_INDEX = 5;
 
 export interface WdtMaid {
   /** tileIndex = row * 64 + col */
   minimapFileDataIdByTile: Map<number, number>;
+  /** tileIndex = row * 64 + col. The tile's real ground-texture-layer ADT (see adt-tex.ts). */
+  tex0AdtFileDataIdByTile: Map<number, number>;
 }
 
 export function parseWdtMaid(data: Buffer): WdtMaid {
   const reader = new ByteReader(data);
   const minimapFileDataIdByTile = new Map<number, number>();
+  const tex0AdtFileDataIdByTile = new Map<number, number>();
 
   while (reader.remainingBytes >= 8) {
     const tag = reader.readFourCC();
@@ -45,13 +49,15 @@ export function parseWdtMaid(data: Buffer): WdtMaid {
         const recordStart = reader.offset + tileIndex * recordSize;
         const minimapId = data.readUInt32LE(recordStart + MINIMAP_FIELD_INDEX * 4);
         if (minimapId !== 0) minimapFileDataIdByTile.set(tileIndex, minimapId);
+        const tex0Id = data.readUInt32LE(recordStart + TEX0_ADT_FIELD_INDEX * 4);
+        if (tex0Id !== 0) tex0AdtFileDataIdByTile.set(tileIndex, tex0Id);
       }
     }
 
     reader.seek(chunkEnd);
   }
 
-  return { minimapFileDataIdByTile };
+  return { minimapFileDataIdByTile, tex0AdtFileDataIdByTile };
 }
 
 export function tileIndex(col: number, row: number): number {

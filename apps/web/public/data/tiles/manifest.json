@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-23T00:22:45.808Z",
-  "tilePixels": 512,
+  "generatedAt": "2026-09-24T00:59:21.681Z",
+  "tilePixels": 1024,
   "zones": [
     {
       "slug": "dun-morogh",
@@ -137,8 +137,8 @@
     {
       "slug": "undercity",
       "name": "Undercity",
-      "width": 1536,
-      "height": 1024
+      "width": 3072,
+      "height": 2048
     },
     {
       "slug": "stormwind-city",
@@ -149,8 +149,8 @@
     {
       "slug": "ironforge",
       "name": "Ironforge",
-      "width": 1024,
-      "height": 1024
+      "width": 2048,
+      "height": 2048
     },
     {
       "slug": "riverglades",
@@ -275,20 +275,20 @@
     {
       "slug": "orgrimmar",
       "name": "Orgrimmar",
-      "width": 2048,
-      "height": 1536
+      "width": 4096,
+      "height": 3072
     },
     {
       "slug": "thunder-bluff",
       "name": "Thunder Bluff",
-      "width": 1024,
-      "height": 1024
+      "width": 2048,
+      "height": 2048
     },
     {
       "slug": "darnassus",
       "name": "Darnassus",
-      "width": 1536,
-      "height": 1536
+      "width": 3072,
+      "height": 3072
     },
     {
       "slug": "shendralas",

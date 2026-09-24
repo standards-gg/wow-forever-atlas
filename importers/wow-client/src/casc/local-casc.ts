@@ -303,20 +303,43 @@ export class LocalCasc {
     const entry = this.rootEntries.get(fileDataID);
     if (!entry) throw new Error(`FileDataID ${fileDataID} not found in root`);
 
-    let contentKey: string | undefined;
-    for (const [typeIdx, key] of entry.byType) {
+    // A FileDataID can have more than one root entry that equally satisfies
+    // the locale/violence filter — confirmed empirically (root-entry-probe.ts
+    // against real ground-texture FileDataIDs): two candidates with the same
+    // locale, one whose encoding key resolves to a local archive entry and
+    // one that doesn't. Picking the first candidate regardless of whether
+    // it's actually present locally meant this could always land on the
+    // absent sibling even when the other candidate was sitting right there
+    // on disk (this is exactly what was happening for ground textures,
+    // which always have this ambiguity; minimap tiles have only one root
+    // entry and never triggered it). Try every matching candidate and use
+    // the first one that's actually resolvable end-to-end.
+    let firstEncodingError: Error | undefined;
+    for (const [typeIdx, contentKey] of entry.byType) {
       const type = this.rootTypes[typeIdx];
-      if ((type.localeFlags & LOCALE_ENUS) !== 0 && (type.contentFlags & CONTENT_FLAG_LOW_VIOLENCE) === 0) {
-        contentKey = key;
-        break;
-      }
+      if ((type.localeFlags & LOCALE_ENUS) === 0 || (type.contentFlags & CONTENT_FLAG_LOW_VIOLENCE) !== 0) continue;
+
+      const encodingKey = this.encodingKeys.get(contentKey);
+      if (!encodingKey) continue;
+      if (!this.localIndexes.has(encodingKey.substring(0, 18))) continue;
+
+      return decodeBlte(this.readArchiveByKey(encodingKey));
     }
-    if (!contentKey) throw new Error(`FileDataID ${fileDataID}: no enUS/non-low-violence root entry`);
 
-    const encodingKey = this.encodingKeys.get(contentKey);
-    if (!encodingKey) throw new Error(`FileDataID ${fileDataID}: no encoding entry for content key ${contentKey}`);
-
-    return decodeBlte(this.readArchiveByKey(encodingKey));
+    // Nothing resolved end-to-end — fall through to the original, simpler
+    // resolution once more so the thrown error names the real reason
+    // (no matching root entry vs. no encoding entry vs. genuinely absent).
+    for (const [typeIdx, contentKey] of entry.byType) {
+      const type = this.rootTypes[typeIdx];
+      if ((type.localeFlags & LOCALE_ENUS) === 0 || (type.contentFlags & CONTENT_FLAG_LOW_VIOLENCE) !== 0) continue;
+      const encodingKey = this.encodingKeys.get(contentKey);
+      if (!encodingKey) {
+        firstEncodingError ??= new Error(`FileDataID ${fileDataID}: no encoding entry for content key ${contentKey}`);
+        continue;
+      }
+      return decodeBlte(this.readArchiveByKey(encodingKey));
+    }
+    throw firstEncodingError ?? new Error(`FileDataID ${fileDataID}: no enUS/non-low-violence root entry`);
   }
 
   private readArchiveByKey(encodingKeyHex: string): Buffer {

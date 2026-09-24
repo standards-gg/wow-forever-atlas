@@ -1,15 +1,21 @@
 #!/usr/bin/env node
 /**
- * Extracts one seamless, whole-continent minimap composite per continent
- * directly from a local WoW: Forever install — the base layer the map
- * needs to look like one continuous landmass (matching how every fan world
- * map, hyjal.cc included, is built: a stitched continent image underneath,
- * with per-zone detail layered on top when you zoom in). Per-zone crops
- * (src/cli.ts) still provide the higher-detail zoomed-in layer.
+ * Extracts one seamless, whole-continent real-terrain composite per
+ * continent directly from a local WoW: Forever install — the base layer
+ * the map needs to look like one continuous landmass (matching how every
+ * fan world map, hyjal.cc included, is built: a stitched continent image
+ * underneath, with per-zone detail layered on top when you zoom in).
+ * Per-zone crops (src/cli.ts) still provide the higher-detail zoomed-in
+ * layer.
+ *
+ * Renders the real ground-texture layers (adt-tex.ts/adt-terrain.ts) —
+ * the same blended grass/dirt/rock look the game itself draws — rather
+ * than the WDT's minimap tile, a small abstracted icon meant only for the
+ * in-game minimap UI, not a cartographic image.
  *
  * The tile grid per continent is a fixed 64x64 (see wdt.ts), but only the
- * tiles that actually have terrain get a minimap texture — this crops to
- * the real populated bounding box instead of extracting 64x64 mostly-empty
+ * tiles that actually have terrain get a tex0 ADT — this crops to the
+ * real populated bounding box instead of extracting 64x64 mostly-empty
  * tiles.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -17,17 +23,20 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LocalCasc } from "./casc/local-casc.js";
 import { parseWdtMaid } from "./wdt.js";
+import { parseAdtTex } from "./adt-tex.js";
+import { renderAdtTile } from "./adt-terrain.js";
 import { decodeBlp, type DecodedImage } from "./blp.js";
 import { encodePng } from "./png.js";
-import { blitTile, boxDownsample, downscaleFactor, isBlankTile, slugify } from "./extract-shared.js";
+import { blitTile, boxDownsample, downscaleFactor, slugify } from "./extract-shared.js";
 
 const INSTALL_DIR = process.env.WOW_INSTALL_DIR ?? "C:\\Program Files (x86)\\World of Warcraft";
 const PRODUCT = "wow_classic_beta";
-const TILE_PIXELS = 512;
+const CHUNK_PIXELS = 32; // 16 chunks/side * 32px = 512px native per ADT tile — continents cover far more tiles than a single zone, so a lower per-tile resolution keeps this tractable
+const TILE_PIXELS = 16 * CHUNK_PIXELS;
 const GRID_SIZE = 64;
-// A continent's populated tile range can be 40+ tiles on a side (20000+px
-// native) — this is the low-detail base layer the whole map fits into at
-// once, so it can be downsampled harder than a single zone crop.
+// A continent's populated tile range can be 40+ tiles on a side — this is
+// the low-detail base layer the whole map fits into at once, so it can be
+// downsampled harder than a single zone crop.
 const MAX_DIMENSION = 6144;
 
 interface ContinentGeography {
@@ -56,10 +65,10 @@ async function main() {
   for (const continent of world.continents) {
     console.error(`\n${continent.name}: fetching WDT (FileDataID ${continent.wdtFileDataId}) and parsing MAID chunk...`);
     const wdt = casc.getFileByFileDataId(continent.wdtFileDataId);
-    const { minimapFileDataIdByTile } = parseWdtMaid(wdt);
+    const { tex0AdtFileDataIdByTile } = parseWdtMaid(wdt);
 
     let minCol = GRID_SIZE, maxCol = -1, minRow = GRID_SIZE, maxRow = -1;
-    for (const idx of minimapFileDataIdByTile.keys()) {
+    for (const idx of tex0AdtFileDataIdByTile.keys()) {
       const col = idx % GRID_SIZE;
       const row = Math.floor(idx / GRID_SIZE);
       if (col < minCol) minCol = col;
@@ -79,22 +88,38 @@ async function main() {
     console.error(`  populated range: col ${minCol}-${maxCol}, row ${minRow}-${maxRow} (native ${width}x${height})`);
     const composite = Buffer.alloc(width * height * 4);
 
+    const textureCache = new Map<number, DecodedImage | undefined>();
+    const getTexture = (fileDataId: number): DecodedImage | undefined => {
+      if (textureCache.has(fileDataId)) return textureCache.get(fileDataId);
+      let image: DecodedImage | undefined;
+      try {
+        image = decodeBlp(casc.getFileByFileDataId(fileDataId));
+      } catch (err) {
+        console.error(`  ground texture ${fileDataId} failed: ${(err as Error).message}`);
+      }
+      textureCache.set(fileDataId, image);
+      return image;
+    };
+
     let extracted = 0;
     for (let row = minRow; row <= maxRow; row++) {
       for (let col = minCol; col <= maxCol; col++) {
         const idx = row * GRID_SIZE + col;
-        const minimapId = minimapFileDataIdByTile.get(idx);
-        if (!minimapId) continue;
-        let tile: DecodedImage;
+        const tex0Id = tex0AdtFileDataIdByTile.get(idx);
+        if (!tex0Id) continue;
         try {
-          tile = decodeBlp(casc.getFileByFileDataId(minimapId));
+          const tex = parseAdtTex(casc.getFileByFileDataId(tex0Id));
+          const textureImages = new Map<number, DecodedImage>();
+          for (const fdid of tex.textureFileDataIds) {
+            const img = getTexture(fdid);
+            if (img) textureImages.set(fdid, img);
+          }
+          const rendered = renderAdtTile(tex, textureImages, CHUNK_PIXELS);
+          blitTile(composite, width, rendered, (col - minCol) * TILE_PIXELS, (row - minRow) * TILE_PIXELS);
+          extracted++;
         } catch (err) {
           console.error(`  tile (col=${col}, row=${row}) failed: ${(err as Error).message}`);
-          continue;
         }
-        if (isBlankTile(tile)) continue;
-        blitTile(composite, width, tile, (col - minCol) * TILE_PIXELS, (row - minRow) * TILE_PIXELS);
-        extracted++;
       }
     }
     console.error(`  ${extracted}/${cols * rows} tiles extracted`);
