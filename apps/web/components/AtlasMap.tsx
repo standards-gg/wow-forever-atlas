@@ -21,14 +21,26 @@ import type { CameraState } from "@/lib/url-state";
 // fits one zone.
 const ZONE_DETAIL_MIN_ZOOM = 10; // below this, only the seamless continent image shows
 const PIN_MIN_ZOOM = 11.5; // below this, individual quest/NPC pins are hidden to avoid clutter
-// Zone name labels are always visible (never hidden); this just controls
-// how their font size interpolates between the world/continent overview
-// (largest, so a zone name reads clearly across its whole area) and a close
-// zoom (smallest, so it doesn't dominate once the user is looking at detail).
+// Zone name labels are always visible (never hidden); this just controls how
+// their font size interpolates between the continent overview (largest, so a
+// name reads clearly across its whole area) and a close zoom (smallest, so it
+// doesn't dominate once the user is looking at detail) — matches hyjal.cc/map's
+// observed behavior (measured directly): its "Place names" layer shows more
+// labels, progressively, the further in you zoom, rather than a hard show/hide
+// toggle at one threshold.
 const ZONE_LABEL_ZOOM_LOW = 8;
 const ZONE_LABEL_ZOOM_HIGH = 14;
 const ZONE_LABEL_MAX_FONT = 15;
 const ZONE_LABEL_MIN_FONT = 10;
+// MapLibre's symbol text-field needs SDF glyph PBFs from a `glyphs` URL
+// template — this is MapLibre's own public demo glyph service (Noto Sans,
+// open-licensed), not any hyjal.cc asset. It gives us the same real,
+// zoom-continuous label collision/density behavior hyjal.cc uses (more
+// labels fade in as you zoom, none of them ever hard-pop), instead of the
+// character-count-estimate greedy hider a plain DOM marker approach would
+// need.
+const GLYPHS_URL = "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf";
+const LABEL_FONT = "Noto Sans Regular";
 
 export interface AtlasMapProps {
   worldContinents: WorldContinent[];
@@ -46,7 +58,6 @@ export interface AtlasMapProps {
 export interface AtlasMapHandle {
   flyToZone: (slug: string) => void;
   flyToPin: (pin: WorldPin) => void;
-  flyToWorld: () => void;
   flyToContinent: (slug: string) => void;
   resetTilt: () => void;
 }
@@ -62,16 +73,11 @@ export interface AtlasMapHandle {
  * mode, which a flat 2D renderer (Leaflet, this app's original renderer)
  * cannot do at all.
  */
-/** The bounding box of every zone's worldRect, combined — used to fit the whole world in view. */
-function computeWorldBounds(worldZones: WorldZone[]): [[number, number], [number, number]] {
-  const xs = worldZones.flatMap((z) => [z.worldRect.x, z.worldRect.x + z.worldRect.width]);
-  const ys = worldZones.flatMap((z) => [z.worldRect.y, z.worldRect.y + z.worldRect.height]);
-  return [toLngLat(Math.min(...xs), Math.max(...ys)), toLngLat(Math.max(...xs), Math.min(...ys))];
-}
-
-// Padding used to lock panning/zooming to "inside the current continent"
-// (Hyjal's model: World shows both continents; clicking into one shows only
-// that one until you explicitly go back to World). 15% of the continent's
+// Padding used to lock panning/zooming to "inside the current continent" —
+// confirmed directly against hyjal.cc/map: it has no view showing more than
+// one continent at once. Each continent (or Dalaran City, or any other
+// top-level place) is fully isolated; zooming out is capped at "whole
+// continent visible", never revealing a neighbor. 15% of the continent's
 // own width/height gives comfortable room to pan around inside it — checked
 // against the real gap between Eastern Kingdoms and Kalimdor's placement
 // rects (world-frame.ts) so the padded box can't reach far enough to reveal
@@ -115,12 +121,6 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         if (wc) map.setMaxBounds(boundsForContinent(wc));
         map.flyTo({ center: toLngLat(pin.worldX, pin.worldY), zoom: Math.max(map.getZoom(), PIN_MIN_ZOOM + 1) });
       },
-      flyToWorld() {
-        const map = mapRef.current;
-        if (!map || worldZones.length === 0) return;
-        map.setMaxBounds(undefined);
-        map.fitBounds(computeWorldBounds(worldZones), { padding: 20 });
-      },
       flyToContinent(slug: string) {
         const map = mapRef.current;
         const wc = worldContinents.find((c) => c.slug === slug);
@@ -143,6 +143,7 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
       style: {
         version: 8,
         sources: {},
+        glyphs: GLYPHS_URL,
         // Missing tiles inside the real continent data (unmapped ADT grid
         // cells) render as this dark, ocean-like color instead of a flat
         // gray "hole".
@@ -160,7 +161,6 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
 
     const continentLabelEls: HTMLElement[] = [];
-    const zoneLabelMarkers: { marker: maplibregl.Marker; el: HTMLElement; text: string }[] = [];
 
     map.on("load", () => {
       // Base layer: one seamless real-terrain image per continent — what
@@ -286,57 +286,40 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         map.addLayer({ id: `zone-${wz.slug}`, type: "raster", source: `zone-${wz.slug}`, minzoom: ZONE_DETAIL_MIN_ZOOM });
       }
 
-      // Bigger zones get priority to stay labeled when space is tight (see
-      // updateZoneLabelLayout below) — creating markers in area-desc order
-      // means the greedy collision pass naturally favors them.
-      for (const wz of zonesByAreaDesc) {
-        const [lng, lat] = toLngLat(wz.worldRect.x + wz.worldRect.width / 2, wz.worldRect.y + wz.worldRect.height / 2);
-        const el = document.createElement("div");
-        el.style.cssText =
-          "font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.9);white-space:nowrap;pointer-events:none;";
-        el.textContent = wz.zone.name;
-        const marker = new maplibregl.Marker({ element: el, anchor: "center" }).setLngLat([lng, lat]).addTo(map);
-        zoneLabelMarkers.push({ marker, el, text: wz.zone.name });
-      }
-
-      // Zone names stay visible at every zoom level (never hidden outright)
-      // and shrink as you zoom in — at that point you're focused on detail
-      // within the zone (terrain, and eventually sub-area/POI names) rather
-      // than the zone as a whole. Largest at the world/continent overview,
-      // where a name has to label its whole area at a glance.
-      //
-      // At the overview, 49 zone names would overlap into an unreadable
-      // mess if all shown at once — real zones are irregular shapes packed
-      // tightly together, so their label points are often close together.
-      // These are plain DOM markers (not a GL symbol layer, which would need
-      // a glyph-server dependency we don't have), so there's no built-in
-      // label collision detection; this does a cheap greedy pass every
-      // frame instead — project each label to screen space, estimate its
-      // box from character count (avoids a DOM reflow per label per frame),
-      // and hide any label that overlaps one already placed. Bigger zones
-      // are checked first (creation order), so they win when space is tight.
-      const updateZoneLabelLayout = () => {
-        const t = Math.min(1, Math.max(0, (map.getZoom() - ZONE_LABEL_ZOOM_LOW) / (ZONE_LABEL_ZOOM_HIGH - ZONE_LABEL_ZOOM_LOW)));
-        const fontSize = ZONE_LABEL_MAX_FONT - t * (ZONE_LABEL_MAX_FONT - ZONE_LABEL_MIN_FONT);
-        const placed: { x0: number; y0: number; x1: number; y1: number }[] = [];
-        for (const { marker, el, text } of zoneLabelMarkers) {
-          el.style.fontSize = `${fontSize}px`;
-          const { x, y } = map.project(marker.getLngLat());
-          const halfW = text.length * fontSize * 0.3;
-          const halfH = fontSize * 0.75;
-          const box = { x0: x - halfW, y0: y - halfH, x1: x + halfW, y1: y + halfH };
-          const overlaps = placed.some((p) => box.x0 < p.x1 && box.x1 > p.x0 && box.y0 < p.y1 && box.y1 > p.y0);
-          if (overlaps) {
-            el.style.display = "none";
-          } else {
-            el.style.display = "";
-            placed.push(box);
-          }
-        }
-      };
-      map.on("zoom", updateZoneLabelLayout);
-      map.on("move", updateZoneLabelLayout);
-      updateZoneLabelLayout();
+      // Zone names, as a real GL symbol layer — matches hyjal.cc/map's
+      // observed "Place names" behavior (measured directly): one unified,
+      // zoom-continuous label layer with native collision detection, where
+      // more labels progressively fade in as you zoom in rather than all
+      // toggling on/off at one hard threshold. `symbol-sort-key` gives
+      // bigger zones priority to stay visible when space is tight; `text-size`
+      // interpolates by zoom so labels shrink smoothly once you're in close
+      // rather than dominating the view.
+      const zoneLabelFeatures = worldZones.map((wz) => ({
+        type: "Feature" as const,
+        properties: { name: wz.zone.name, sortKey: -(wz.worldRect.width * wz.worldRect.height) },
+        geometry: {
+          type: "Point" as const,
+          coordinates: toLngLat(wz.worldRect.x + wz.worldRect.width / 2, wz.worldRect.y + wz.worldRect.height / 2),
+        },
+      }));
+      map.addSource("zone-labels", { type: "geojson", data: { type: "FeatureCollection", features: zoneLabelFeatures } });
+      map.addLayer({
+        id: "zone-labels",
+        type: "symbol",
+        source: "zone-labels",
+        layout: {
+          "text-field": ["get", "name"],
+          "text-font": [LABEL_FONT],
+          "text-size": ["interpolate", ["linear"], ["zoom"], ZONE_LABEL_ZOOM_LOW, ZONE_LABEL_MAX_FONT, ZONE_LABEL_ZOOM_HIGH, ZONE_LABEL_MIN_FONT],
+          "symbol-sort-key": ["get", "sortKey"],
+          "text-padding": 4,
+        },
+        paint: {
+          "text-color": "#ffffff",
+          "text-halo-color": "rgba(0,0,0,0.85)",
+          "text-halo-width": 1.2,
+        },
+      });
 
       // Entity pins (quest givers, flight paths) — a GPU circle layer
       // (not per-pin DOM elements/React components), so this scales to
@@ -394,16 +377,18 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
 
       // A shared URL (with exact camera params) restores precisely what was
       // shared; otherwise fall back to a focused zone (a plainer `?zone=`
-      // link), then the whole world.
+      // link); otherwise, since there's no combined "world" view (confirmed
+      // against hyjal.cc/map — every top-level place is isolated, none show
+      // more than one continent), land on the first continent, same as
+      // hyjal.cc/map's own default landing.
       const focusZone = focusSlug ? worldZones.find((z) => z.slug === focusSlug) : undefined;
-      // A `?zone=` (or a shared camera alongside one) means we're "inside"
-      // that zone's continent — lock panning/zooming to it immediately so
-      // a reload doesn't briefly (or permanently) expose the other
-      // continent before the user explicitly asks for World.
-      if (focusZone) {
-        const focusContinent = worldContinents.find((c) => c.continent.mapId === focusZone.continent.mapId);
-        if (focusContinent) map.setMaxBounds(boundsForContinent(focusContinent));
-      }
+      const focusContinent = focusZone
+        ? worldContinents.find((c) => c.continent.mapId === focusZone.continent.mapId)
+        : worldContinents[0];
+      // Lock panning/zooming to the focused continent immediately (not just
+      // after the initial fit) so a reload never briefly — or permanently —
+      // exposes a neighboring continent.
+      if (focusContinent) map.setMaxBounds(boundsForContinent(focusContinent));
       if (initialCamera) {
         map.jumpTo({
           center: [initialCamera.lng, initialCamera.lat],
@@ -413,8 +398,8 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         });
       } else if (focusZone) {
         map.fitBounds(rectToLngLatBounds(focusZone.worldRect), { padding: 40, animate: false });
-      } else if (worldZones.length > 0) {
-        map.fitBounds(computeWorldBounds(worldZones), { padding: 20, animate: false });
+      } else if (focusContinent) {
+        map.fitBounds(rectToLngLatBounds(focusContinent.worldRect), { padding: 20, animate: false });
       }
       reportCamera();
       map.once("idle", () => onReady?.());
@@ -425,7 +410,6 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
 
     return () => {
       resizeObserver.disconnect();
-      for (const { marker } of zoneLabelMarkers) marker.remove();
       map.remove();
       mapRef.current = null;
     };

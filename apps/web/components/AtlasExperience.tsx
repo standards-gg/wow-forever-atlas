@@ -35,9 +35,14 @@ export function AtlasExperience({
   const mapRef = useRef<AtlasMapHandle>(null);
   const [selectedZoneSlug, setSelectedZoneSlug] = useState<string | null>(initialFocusSlug ?? null);
   const initialZone = worldZones.find((z) => z.slug === initialFocusSlug);
-  const initialContinentSlug = initialZone
-    ? worldContinents.find((c) => c.continent.mapId === initialZone.continent.mapId)?.slug ?? null
-    : null;
+  // No combined "world" view exists (confirmed directly against hyjal.cc/map
+  // — every top-level place is fully isolated), so there's always a current
+  // continent: the selected zone's, or the first one by default, matching
+  // AtlasMap's own default-landing behavior.
+  const initialContinentSlug =
+    (initialZone ? worldContinents.find((c) => c.continent.mapId === initialZone.continent.mapId)?.slug : undefined) ??
+    worldContinents[0]?.slug ??
+    null;
   const [activeContinentSlug, setActiveContinentSlug] = useState<string | null>(initialContinentSlug);
   const [selectedPin, setSelectedPin] = useState<WorldPin | null>(
     () => pins.find((p) => p.id === initialPinId) ?? null
@@ -98,11 +103,6 @@ export function AtlasExperience({
     // clicks on the nav buttons.
     const zone = slug ? worldZones.find((z) => z.slug === slug) : null;
     setActiveContinentSlug(zone ? worldContinents.find((c) => c.continent.mapId === zone.continent.mapId)?.slug ?? null : null);
-  }
-
-  function handleGoToWorld() {
-    setActiveContinentSlug(null);
-    mapRef.current?.flyToWorld();
   }
 
   function handleGoToContinent(slug: string) {
@@ -194,23 +194,13 @@ export function AtlasExperience({
 
         <div className="pointer-events-none absolute left-3 top-3 z-[1000] w-56 max-w-[calc(100vw-1.5rem)]">
           <div className="pointer-events-auto flex flex-col gap-0.5 rounded-md border border-white/15 bg-[#150b06]/95 p-1.5 shadow-lg">
-            <button
-              type="button"
-              onClick={handleGoToWorld}
-              aria-current={activeContinentSlug === null ? "true" : undefined}
-              className={`rounded px-2.5 py-1.5 text-left text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 ${
-                activeContinentSlug === null ? "bg-ember-400/20 text-ember-400" : "text-[#c9b8ae] hover:bg-white/10"
-              }`}
-            >
-              World
-            </button>
             {worldContinents.map((wc) => (
               <button
                 key={wc.slug}
                 type="button"
                 onClick={() => handleGoToContinent(wc.slug)}
                 aria-current={activeContinentSlug === wc.slug ? "true" : undefined}
-                className={`rounded px-2.5 py-1.5 pl-5 text-left text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 ${
+                className={`rounded px-2.5 py-1.5 text-left text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 ${
                   activeContinentSlug === wc.slug ? "bg-ember-400/20 text-ember-400" : "text-[#c9b8ae] hover:bg-white/10"
                 }`}
               >
