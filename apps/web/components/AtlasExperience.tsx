@@ -34,6 +34,11 @@ export function AtlasExperience({
 }: AtlasExperienceProps) {
   const mapRef = useRef<AtlasMapHandle>(null);
   const [selectedZoneSlug, setSelectedZoneSlug] = useState<string | null>(initialFocusSlug ?? null);
+  const initialZone = worldZones.find((z) => z.slug === initialFocusSlug);
+  const initialContinentSlug = initialZone
+    ? worldContinents.find((c) => c.continent.mapId === initialZone.continent.mapId)?.slug ?? null
+    : null;
+  const [activeContinentSlug, setActiveContinentSlug] = useState<string | null>(initialContinentSlug);
   const [selectedPin, setSelectedPin] = useState<WorldPin | null>(
     () => pins.find((p) => p.id === initialPinId) ?? null
   );
@@ -88,6 +93,21 @@ export function AtlasExperience({
     setSelectedPin(null);
     selectionRef.current = { zone: slug, pin: undefined };
     writeUrl(selectionRef.current);
+    // Keep the World/continent nav highlight in sync with whatever the map
+    // itself just navigated into (e.g. clicking a zone directly), not just
+    // clicks on the nav buttons.
+    const zone = slug ? worldZones.find((z) => z.slug === slug) : null;
+    setActiveContinentSlug(zone ? worldContinents.find((c) => c.continent.mapId === zone.continent.mapId)?.slug ?? null : null);
+  }
+
+  function handleGoToWorld() {
+    setActiveContinentSlug(null);
+    mapRef.current?.flyToWorld();
+  }
+
+  function handleGoToContinent(slug: string) {
+    setActiveContinentSlug(slug);
+    mapRef.current?.flyToContinent(slug);
   }
 
   function handleSelectPin(pin: WorldPin | null) {
@@ -104,6 +124,7 @@ export function AtlasExperience({
     mapRef.current?.flyToZone(zone.slug);
     selectionRef.current = { zone: zone.slug, pin: undefined };
     writeUrl(selectionRef.current);
+    setActiveContinentSlug(worldContinents.find((c) => c.continent.mapId === zone.continent.mapId)?.slug ?? null);
   }
 
   function handlePickPinResult(pin: WorldPin) {
@@ -113,6 +134,8 @@ export function AtlasExperience({
     mapRef.current?.flyToPin(pin);
     selectionRef.current = { zone: pin.zoneSlug, pin: pin.id };
     writeUrl(selectionRef.current);
+    const pinZone = worldZones.find((z) => z.slug === pin.zoneSlug);
+    setActiveContinentSlug(pinZone ? worldContinents.find((c) => c.continent.mapId === pinZone.continent.mapId)?.slug ?? null : null);
   }
 
   async function handleShareView() {
@@ -169,12 +192,15 @@ export function AtlasExperience({
           </div>
         )}
 
-        <div className="pointer-events-none absolute left-3 top-3 z-[1000] w-72 max-w-[calc(100vw-1.5rem)]">
-          <div className="pointer-events-auto flex gap-1.5">
+        <div className="pointer-events-none absolute left-3 top-3 z-[1000] w-56 max-w-[calc(100vw-1.5rem)]">
+          <div className="pointer-events-auto flex flex-col gap-0.5 rounded-md border border-white/15 bg-[#150b06]/95 p-1.5 shadow-lg">
             <button
               type="button"
-              onClick={() => mapRef.current?.flyToWorld()}
-              className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
+              onClick={handleGoToWorld}
+              aria-current={activeContinentSlug === null ? "true" : undefined}
+              className={`rounded px-2.5 py-1.5 text-left text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 ${
+                activeContinentSlug === null ? "bg-ember-400/20 text-ember-400" : "text-[#c9b8ae] hover:bg-white/10"
+              }`}
             >
               World
             </button>
@@ -182,8 +208,11 @@ export function AtlasExperience({
               <button
                 key={wc.slug}
                 type="button"
-                onClick={() => mapRef.current?.flyToContinent(wc.slug)}
-                className="rounded-md border border-white/15 bg-[#150b06]/95 px-2.5 py-2 text-xs font-medium text-[#c9b8ae] shadow-lg hover:bg-[#150b06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400"
+                onClick={() => handleGoToContinent(wc.slug)}
+                aria-current={activeContinentSlug === wc.slug ? "true" : undefined}
+                className={`rounded px-2.5 py-1.5 pl-5 text-left text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember-400 ${
+                  activeContinentSlug === wc.slug ? "bg-ember-400/20 text-ember-400" : "text-[#c9b8ae] hover:bg-white/10"
+                }`}
               >
                 {wc.continent.name}
               </button>

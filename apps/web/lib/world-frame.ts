@@ -11,11 +11,27 @@ import type { TileManifestEntry } from "./tiles";
  * zoomable map possible (per Hyjal's own architecture) instead of three
  * separate pages each with their own local 0-100 space.
  *
- * WORLD_SIZE is an arbitrary unit scale (not real-world distance) — Leaflet
- * with CRS.Simple just needs *a* consistent numeric space, matching how
- * every other flat-plane game map (not just WoW fan tools) uses Leaflet.
+ * WORLD_HEIGHT is an arbitrary unit scale (not real-world distance) — the
+ * map just needs *a* consistent numeric space, matching how every other
+ * flat-plane game map (not just WoW fan tools) works.
+ *
+ * The frame is NOT square. Blizzard's real Azeroth world-map background
+ * (the shared canvas both continents' `worldMapPlacement` UI-fractions are
+ * placed within) is wider than it is tall — confirmed empirically by
+ * comparing each continent's real world-space aspect ratio (from its ADT
+ * `worldBounds`, i.e. actual in-game yards) against its UI-map placement
+ * aspect ratio (from `worldMapPlacement` fractions): Eastern Kingdoms and
+ * Kalimdor independently give a real-yards-per-placement-fraction ratio
+ * (X vs Y) of 1.4826 and 1.5163 — nearly identical despite being unrelated
+ * landmasses, which only makes sense if it's a property of the shared
+ * canvas itself, not either continent's shape. Forcing that onto a square
+ * WORLD_SIZE x WORLD_SIZE frame (the earlier, wrong approach) squeezed
+ * everything horizontally — exactly the "Kalimdor is contracted on the
+ * horizontal" distortion reported. WORLD_ASPECT_RATIO corrects for it.
  */
-export const WORLD_SIZE = 10000;
+export const WORLD_HEIGHT = 10000;
+export const WORLD_ASPECT_RATIO = 1.5; // avg(1.4826, 1.5163) rounds to a clean 3:2
+export const WORLD_WIDTH = WORLD_HEIGHT * WORLD_ASPECT_RATIO;
 
 export interface FractionRect {
   x: number; // 0-1
@@ -25,7 +41,7 @@ export interface FractionRect {
 }
 
 export interface WorldRect {
-  /** World-frame units, 0-WORLD_SIZE, y increasing south (screen/CSS convention) */
+  /** World-frame units, 0-WORLD_WIDTH by 0-WORLD_HEIGHT, y increasing south (screen/CSS convention) */
   x: number;
   y: number;
   width: number;
@@ -50,10 +66,10 @@ export function zoneFractionInWorld(zone: ZoneGeography, continent: ContinentGeo
 
 export function fractionToWorldRect(frac: FractionRect): WorldRect {
   return {
-    x: frac.x * WORLD_SIZE,
-    y: frac.y * WORLD_SIZE,
-    width: frac.width * WORLD_SIZE,
-    height: frac.height * WORLD_SIZE,
+    x: frac.x * WORLD_WIDTH,
+    y: frac.y * WORLD_HEIGHT,
+    width: frac.width * WORLD_WIDTH,
+    height: frac.height * WORLD_HEIGHT,
   };
 }
 
@@ -73,12 +89,14 @@ export function pointInZoneToWorld(zoneWorld: WorldRect, xPercent: number, yPerc
  * small lng/lat window near the equator/prime meridian — Mercator
  * distortion is proportional to how far from the equator you are, and at
  * a span of a few degrees it's well under 0.1%, i.e. visually a flat
- * plane. WORLD_SIZE (10000 units) maps to DEGREES_SPAN degrees; both
- * raster images and marker/pin positions go through this same transform,
- * so nothing can drift out of alignment relative to each other.
+ * plane. DEGREES_PER_UNIT is one uniform scale applied to both axes — it's
+ * only a units conversion, so it can't itself introduce distortion; WORLD_HEIGHT
+ * (not WORLD_WIDTH) anchors it since height is the frame's undistorted axis.
+ * Both raster images and marker/pin positions go through this same
+ * transform, so nothing can drift out of alignment relative to each other.
  */
 const DEGREES_SPAN = 4;
-const DEGREES_PER_UNIT = DEGREES_SPAN / WORLD_SIZE;
+const DEGREES_PER_UNIT = DEGREES_SPAN / WORLD_HEIGHT;
 
 /** [lng, lat] — negate y (which increases south/downward, our screen/CSS convention) since lat increases north. */
 export function toLngLat(worldX: number, worldY: number): [number, number] {
