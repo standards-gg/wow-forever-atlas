@@ -3,23 +3,25 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import maplibregl from "maplibre-gl";
-import { biomeSolidColor, getBiome } from "@/lib/biome";
-import {
-  rectToLngLatBounds,
-  rectToLngLatCorners,
-  toLngLat,
-  type WorldContinent,
-  type WorldPin,
-  type WorldZone,
-} from "@/lib/world-frame";
+import { Protocol } from "pmtiles";
+import { rectToLngLatBounds, toLngLat, type WorldContinent, type WorldPin, type WorldZone } from "@/lib/world-frame";
 import type { CameraState } from "@/lib/url-state";
+
+// Registered once at module scope (not per mount) — this is a global
+// maplibregl.addProtocol registration, and hyjal.cc/map's own network
+// requests confirmed this exact format (a PMTiles archive, one per
+// continent) is the real technique behind its seamless, all-zoom-levels
+// terrain; see importers/wow-client/src/build-tile-pyramid.ts for how ours
+// are generated and importers/wow-client/README.md for the packing step.
+const pmtilesProtocol = new Protocol();
+maplibregl.addProtocol("pmtiles", pmtilesProtocol.tile);
 
 // MapLibre zoom is real Web Mercator zoom (256px tile at z0), an entirely
 // different absolute scale than Leaflet's old CRS.Simple zoom — these were
 // picked empirically for our fabricated ~4-degree world span (see
 // world-frame.ts's DEGREES_SPAN): ~8.3 fits the whole world, ~11.6-12.6
 // fits one zone.
-const ZONE_DETAIL_MIN_ZOOM = 10; // below this, only the seamless continent image shows
+const ZONE_DETAIL_MIN_ZOOM = 10; // below this, zone border outlines (for zones with entity data) are hidden to avoid clutter
 const PIN_MIN_ZOOM = 11.5; // below this, individual quest/NPC pins are hidden to avoid clutter
 // Zone name labels are always visible (never hidden); this just controls how
 // their font size interpolates between the continent overview (largest, so a
@@ -163,16 +165,16 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
     const continentLabelEls: HTMLElement[] = [];
 
     map.on("load", () => {
-      // Base layer: one seamless real-terrain image per continent — what
-      // makes the whole map read as one continuous landmass instead of
-      // disconnected zone boxes. Higher-detail per-zone tiles sit on top,
-      // gated to appear only once zoomed in (minzoom below).
+      // Base layer: one seamless, real-coastline-shaped tile pyramid per
+      // continent — real terrain at every zoom level, with no zone-rectangle
+      // image in the rendering layer at all (so no overlap problem, unlike
+      // a per-zone image ever could: real zones are irregular shapes whose
+      // rectangular bounds heavily overlap their neighbors).
       for (const wc of worldContinents) {
-        if (!wc.tile) continue;
         map.addSource(`continent-${wc.slug}`, {
-          type: "image",
-          url: `/data/continents/${wc.slug}.png`,
-          coordinates: rectToLngLatCorners(wc.worldRect),
+          type: "raster",
+          url: `pmtiles:///data/tile-pyramids/${wc.slug}.pmtiles`,
+          tileSize: 256,
         });
         map.addLayer({ id: `continent-${wc.slug}`, type: "raster", source: `continent-${wc.slug}` });
 
@@ -232,59 +234,6 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
       });
       map.on("mouseenter", "zone-click-regions", () => (map.getCanvas().style.cursor = "pointer"));
       map.on("mouseleave", "zone-click-regions", () => (map.getCanvas().style.cursor = ""));
-
-      // Zone detail: real terrain image where extracted, or a solid
-      // generated biome color where a zone has no continent image behind
-      // it to fall back on. Gated by minzoom so the whole-continent view
-      // shows only the single seamless continent image with no per-zone
-      // seams or label clutter.
-      const fallbackFeatures = worldZones
-        .filter((wz) => {
-          const continentHasImage = worldContinents.find((c) => c.continent.mapId === wz.continent.mapId)?.tile;
-          return !wz.tile && !continentHasImage;
-        })
-        .map((wz) => {
-          const [w, s, e, n] = [
-            ...toLngLat(wz.worldRect.x, wz.worldRect.y + wz.worldRect.height),
-            ...toLngLat(wz.worldRect.x + wz.worldRect.width, wz.worldRect.y),
-          ];
-          return {
-            type: "Feature" as const,
-            properties: { color: biomeSolidColor(getBiome(wz.zone.name)) },
-            geometry: { type: "Polygon" as const, coordinates: [[[w, n], [e, n], [e, s], [w, s], [w, n]]] },
-          };
-        });
-      if (fallbackFeatures.length > 0) {
-        map.addSource("zone-fallback-fill", { type: "geojson", data: { type: "FeatureCollection", features: fallbackFeatures } });
-        map.addLayer({
-          id: "zone-fallback-fill",
-          type: "fill",
-          source: "zone-fallback-fill",
-          minzoom: ZONE_DETAIL_MIN_ZOOM,
-          paint: { "fill-color": ["get", "color"], "fill-opacity": 0.85 },
-        });
-      }
-
-      // Real zones are irregular shapes, not rectangles — their axis-aligned
-      // worldRects (all we have; no vector zone-boundary data) frequently
-      // overlap a neighbor's heavily (confirmed empirically: 121 overlapping
-      // pairs across 49 zones, some 100% — e.g. Moonglade's whole rect sits
-      // inside Winterspring's). MapLibre draws layers in add-order, so
-      // without this, whichever zone happened to load last would randomly
-      // paint over its neighbors. Adding smaller (more specific/nested)
-      // zones LAST — on top — means the more-specific zone always wins the
-      // area it actually owns, instead of an arbitrary one flickering over
-      // the other.
-      const zonesByAreaDesc = [...worldZones].sort((a, b) => b.worldRect.width * b.worldRect.height - a.worldRect.width * a.worldRect.height);
-      for (const wz of zonesByAreaDesc) {
-        if (!wz.tile) continue;
-        map.addSource(`zone-${wz.slug}`, {
-          type: "image",
-          url: `/data/tiles/${wz.slug}.png`,
-          coordinates: rectToLngLatCorners(wz.worldRect),
-        });
-        map.addLayer({ id: `zone-${wz.slug}`, type: "raster", source: `zone-${wz.slug}`, minzoom: ZONE_DETAIL_MIN_ZOOM });
-      }
 
       // Zone names, as a real GL symbol layer — matches hyjal.cc/map's
       // observed "Place names" behavior (measured directly): one unified,
@@ -402,7 +351,24 @@ export const AtlasMap = forwardRef<AtlasMapHandle, AtlasMapProps>(function Atlas
         map.fitBounds(rectToLngLatBounds(focusContinent.worldRect), { padding: 20, animate: false });
       }
       reportCamera();
-      map.once("idle", () => onReady?.());
+      // A handful of individual PMTiles tile requests have been observed to
+      // never resolve (neither load nor error) — a concurrency edge case in
+      // the pmtiles JS library's request-dedup logic when multiple tiles
+      // need the same directory fetch, not a data or network problem (every
+      // underlying HTTP request completes 200/206; confirmed via MapLibre's
+      // own sourcedata events). That can leave `idle` waiting forever for
+      // those specific tiles. A couple of missing 256px patches that
+      // self-heal on the next pan/zoom is a much smaller problem than the
+      // whole map being stuck behind a loading screen — fire onReady on
+      // whichever comes first.
+      let ready = false;
+      const fireReady = () => {
+        if (ready) return;
+        ready = true;
+        onReady?.();
+      };
+      map.once("idle", fireReady);
+      setTimeout(fireReady, 4000);
     });
 
     const resizeObserver = new ResizeObserver(() => map.resize());

@@ -8,7 +8,8 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "extract:minimaps": "tsx src/cli.ts",
-    "extract:continents": "tsx src/extract-continents.ts"
+    "extract:continents": "tsx src/extract-continents.ts",
+    "build:tile-pyramid": "tsx src/build-tile-pyramid.ts"
   },
   "dependencies": {
     "@atlas/shared": "*"

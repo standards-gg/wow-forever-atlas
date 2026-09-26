@@ -11,3 +11,13 @@ coverage/
 *.tsbuildinfo
 .scratch/
 importers/wow-client/*.png
+
+# Profession importer download cache (wago DB2 CSVs, ATT Lua files)
+importers/professions/.cache/
+
+.next-*/
+
+# Raw {z}/{x}/{y}.png tile-pyramid directories (importers/wow-client/src/build-tile-pyramid.ts's
+# intermediate output) — only the packed *.pmtiles archives (one file per continent) are
+# committed; the loose directories are ~20k small files duplicating the same data.
+apps/web/public/data/tile-pyramids/*/
